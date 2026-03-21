@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { US_STATES } from "@/data/usStates";
+import { US_STATES, US_TERRITORIES } from "@/data/usStates";
 import { getStateData } from "@/data/states";
 import { hasCountyData, findCountyOffice } from "@/data/countyOffices";
 import { getCountyFromZip } from "@/lib/zipToCounty";
@@ -47,7 +47,7 @@ export default function QuickPage() {
                 htmlFor="state"
                 className="block text-sm font-medium text-slate-700 mb-1"
               >
-                State where you were born
+                State or US territory where you were born
               </label>
               <select
                 id="state"
@@ -58,12 +58,21 @@ export default function QuickPage() {
                 }}
                 className="w-full p-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">Select a state...</option>
-                {US_STATES.map((s) => (
-                  <option key={s.code} value={s.code}>
-                    {s.name}
-                  </option>
-                ))}
+                <option value="">Select a state or US territory...</option>
+                <optgroup label="States">
+                  {US_STATES.map((s) => (
+                    <option key={s.code} value={s.code}>
+                      {s.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="US Territories">
+                  {US_TERRITORIES.map((s) => (
+                    <option key={s.code} value={s.code}>
+                      {s.name}
+                    </option>
+                  ))}
+                </optgroup>
               </select>
             </div>
             {showZip && (
@@ -97,7 +106,7 @@ export default function QuickPage() {
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-8">
             <p className="font-semibold text-amber-800 mb-3">
               We don&apos;t have a detailed guide for{" "}
-              {US_STATES.find((s) => s.code === stateCode)?.name || stateCode}{" "}
+              {[...US_STATES, ...US_TERRITORIES].find((s) => s.code === stateCode)?.name || stateCode}{" "}
               yet, but you can order through these resources:
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -186,15 +195,27 @@ function QuickResults({
       {/* Fee waiver callout */}
       {stateData.feeWaivers.length > 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6">
-          <p className="font-semibold text-amber-800 mb-2">Fee Waivers Available</p>
-          <ul className="text-sm text-amber-700 space-y-1.5 list-disc list-outside ml-4">
-            {stateData.feeWaivers.map((w, i) => (
-              <li key={i}>
-                <span className="font-medium">{w.eligibility}:</span> {w.howToClaim}
-                {w.citation && <span className="text-amber-600"> ({w.citation})</span>}
-              </li>
-            ))}
-          </ul>
+          <p className="font-semibold text-amber-800 mb-2">
+            {stateData.feeWaivers.length === 1 ? "Fee Waiver Information" : "Fee Waivers Available"}
+          </p>
+          {stateData.feeWaivers.length === 1 ? (
+            <p className="text-sm text-amber-700">
+              <span className="font-medium">{stateData.feeWaivers[0].eligibility}:</span>{" "}
+              {stateData.feeWaivers[0].howToClaim}
+              {stateData.feeWaivers[0].citation && (
+                <span className="text-amber-600"> ({stateData.feeWaivers[0].citation})</span>
+              )}
+            </p>
+          ) : (
+            <ul className="text-sm text-amber-700 space-y-1.5 list-disc list-outside ml-4">
+              {stateData.feeWaivers.map((w, i) => (
+                <li key={i}>
+                  <span className="font-medium">{w.eligibility}:</span> {w.howToClaim}
+                  {w.citation && <span className="text-amber-600"> ({w.citation})</span>}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
 

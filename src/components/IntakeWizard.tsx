@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IntakeAnswers, Circumstance } from "@/types";
-import { US_STATES } from "@/data/usStates";
+import { US_STATES, US_TERRITORIES } from "@/data/usStates";
 import { getStateData, getAvailableStates } from "@/data/states";
 import { hasCountyData } from "@/data/countyOffices";
 import { getCountyFromZip } from "@/lib/zipToCounty";
@@ -142,18 +142,27 @@ export default function IntakeWizard() {
               onChange={(e) => update("birthState", e.target.value)}
               className="w-full p-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="">Select a state...</option>
-              {US_STATES.map((s) => (
-                <option key={s.code} value={s.code}>
-                  {s.name}
-                </option>
-              ))}
+              <option value="">Select a state or US territory...</option>
+              <optgroup label="States">
+                {US_STATES.map((s) => (
+                  <option key={s.code} value={s.code}>
+                    {s.name}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="US Territories">
+                {US_TERRITORIES.map((s) => (
+                  <option key={s.code} value={s.code}>
+                    {s.name}
+                  </option>
+                ))}
+              </optgroup>
             </select>
             {answers.birthState && !getStateData(answers.birthState) && (
               <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
                 <p className="font-semibold text-amber-800 mb-2">
                   We don&apos;t have a detailed guide for{" "}
-                  {US_STATES.find((s) => s.code === answers.birthState)?.name ||
+                  {[...US_STATES, ...US_TERRITORIES].find((s) => s.code === answers.birthState)?.name ||
                     answers.birthState}{" "}
                   yet.
                 </p>
@@ -209,7 +218,7 @@ export default function IntakeWizard() {
         {stepName === "zipCode" && (
           <StepContainer
             title="What's your zip code?"
-            subtitle={`${US_STATES.find((s) => s.code === answers.birthState)?.name || "Your state"} has local offices that can issue birth certificates — often same-day. We'll find the one nearest you.`}
+            subtitle={`${[...US_STATES, ...US_TERRITORIES].find((s) => s.code === answers.birthState)?.name || "Your state"} has local offices that can issue birth certificates — often same-day. We'll find the one nearest you.`}
           >
             <input
               type="text"

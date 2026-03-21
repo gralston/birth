@@ -1,4 +1,4 @@
-/** All US states and territories for the intake dropdown */
+/** US states (+ DC) for the intake dropdown */
 export const US_STATES = [
   { code: "AL", name: "Alabama" },
   { code: "AK", name: "Alaska" },
@@ -51,6 +51,10 @@ export const US_STATES = [
   { code: "WV", name: "West Virginia" },
   { code: "WI", name: "Wisconsin" },
   { code: "WY", name: "Wyoming" },
+] as const;
+
+/** US territories for the intake dropdown */
+export const US_TERRITORIES = [
   { code: "AS", name: "American Samoa" },
   { code: "GU", name: "Guam" },
   { code: "MP", name: "Northern Mariana Islands" },
