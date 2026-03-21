@@ -77,7 +77,7 @@ export default function QuickPage() {
               </select>
               <button
                 onClick={() => setShowBornAbroad(true)}
-                className="mt-2 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
+                className="mt-2 py-2 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
               >
                 I was born outside the United States
               </button>
@@ -160,7 +160,7 @@ export default function QuickPage() {
             </div>
             <button
               onClick={() => setShowBornAbroad(false)}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-blue-600 hover:text-blue-800 font-medium text-sm py-2"
             >
               &larr; Back to state selection
             </button>
@@ -238,21 +238,24 @@ function QuickResults({
               <p className="font-semibold text-green-800">
                 Your nearest office: {countyOffice.name}
               </p>
-              <p className="text-sm text-green-700">
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(countyOffice.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  {countyOffice.address}
-                </a>
-                {" | "}
-                <a href={`tel:${countyOffice.phone.replace(/[^\d+]/g, "")}`} className="underline">
-                  {countyOffice.phone}
-                </a>
-                {countyOffice.hours && ` | ${countyOffice.hours}`}
-              </p>
+              <div className="text-sm text-green-700 space-y-0.5">
+                <p>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(countyOffice.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    {countyOffice.address}
+                  </a>
+                </p>
+                <p>
+                  <a href={`tel:${countyOffice.phone.replace(/[^\d+]/g, "")}`} className="underline">
+                    {countyOffice.phone}
+                  </a>
+                  {countyOffice.hours && ` · ${countyOffice.hours}`}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -411,15 +414,15 @@ function QuickResults({
       <div className="bg-slate-50 rounded-xl p-6 text-sm text-slate-600 space-y-4">
         <div>
           <p className="font-medium text-slate-700">{stateData.office.name}</p>
+          <p>{stateData.office.address}</p>
           <p>
-            {stateData.office.address} |{" "}
             <a
               href={`tel:${stateData.office.phone.replace(/[^\d+]/g, "")}`}
               className="text-blue-600 hover:text-blue-800"
             >
               {stateData.office.phone}
             </a>
-            {" | "}
+            {" · "}
             <a
               href={stateData.office.website}
               target="_blank"
@@ -432,14 +435,14 @@ function QuickResults({
         </div>
 
         {stateData.specialNotes && stateData.specialNotes.length > 0 && (
-          <ul className="text-xs text-slate-500 space-y-1">
+          <ul className="text-xs sm:text-sm text-slate-500 space-y-1">
             {stateData.specialNotes.map((note, i) => (
               <li key={i}>* {note}</li>
             ))}
           </ul>
         )}
 
-        <p className="text-xs text-slate-400 pt-2 border-t border-slate-200">
+        <p className="text-xs sm:text-sm text-slate-500 pt-2 border-t border-slate-200">
           Information may change — verify with your state&apos;s vital records
           office before submitting. We are not affiliated with any government
           agency.
@@ -511,7 +514,7 @@ function MethodCard({
           href={cta.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-center bg-blue-800 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          className="inline-block text-center bg-blue-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors"
         >
           {cta.label} &rarr;
         </a>

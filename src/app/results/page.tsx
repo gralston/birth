@@ -283,7 +283,7 @@ function ResultsContent() {
                               href={opt.link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-block text-center bg-blue-800 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2"
+                              className="inline-block text-center bg-blue-800 text-white text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors mb-2"
                             >
                               {opt.link.label} &rarr;
                             </a>
@@ -322,7 +322,7 @@ function ResultsContent() {
                       href={step.link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block text-blue-600 hover:text-blue-800 font-medium"
+                      className="inline-block text-blue-600 hover:text-blue-800 font-medium py-2"
                     >
                       {step.link.label} &rarr;
                     </a>
@@ -363,15 +363,15 @@ function ResultsContent() {
       <div className="bg-slate-50 rounded-xl p-6 text-sm text-slate-600 space-y-4">
         <div>
           <p className="font-medium text-slate-700">{stateData.office.name}</p>
+          <p>{stateData.office.address}</p>
           <p>
-            {stateData.office.address} |{" "}
             <a
               href={`tel:${stateData.office.phone.replace(/[^\d+]/g, "")}`}
               className="text-blue-600 hover:text-blue-800"
             >
               {stateData.office.phone}
             </a>
-            {" | "}
+            {" · "}
             <a
               href={stateData.office.website}
               target="_blank"
@@ -382,7 +382,7 @@ function ResultsContent() {
             </a>
           </p>
         </div>
-        <p className="text-xs text-slate-400 pt-2 border-t border-slate-200">
+        <p className="text-xs sm:text-sm text-slate-500 pt-2 border-t border-slate-200">
           This information is provided as a guide only. We are not affiliated
           with any government agency. Requirements and fees may change — verify
           with your state&apos;s vital records office before submitting your
@@ -404,7 +404,7 @@ function ResultsContent() {
       <div className="text-center mt-4">
         <Link
           href="/intake"
-          className="inline-block text-blue-600 hover:text-blue-800 font-medium"
+          className="inline-block text-blue-600 hover:text-blue-800 font-medium py-2"
         >
           Start over with different answers
         </Link>

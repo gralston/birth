@@ -182,7 +182,7 @@ export default function IntakeWizard() {
           </div>
           <button
             onClick={() => setShowBornAbroad(false)}
-            className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+            className="text-blue-600 hover:text-blue-800 font-medium text-sm py-2"
           >
             &larr; Back to state selection
           </button>
@@ -223,7 +223,7 @@ export default function IntakeWizard() {
             </select>
             <button
               onClick={() => setShowBornAbroad(true)}
-              className="mt-3 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
+              className="mt-3 py-2 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
             >
               I was born outside the United States
             </button>
@@ -311,7 +311,7 @@ export default function IntakeWizard() {
             )}
             <button
               onClick={next}
-              className="mt-4 text-sm text-slate-400 hover:text-slate-600 underline"
+              className="mt-4 py-2 text-sm text-slate-400 hover:text-slate-600 underline"
             >
               Skip — just show me the state office
             </button>
