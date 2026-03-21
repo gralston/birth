@@ -21,6 +21,7 @@ export const NY: StateVitalRecords = {
     online: {
       url: "https://www.vitalchek.com/v/vital-records/new-york",
       provider: "vitalchek",
+      fee: 45,
       additionalFee: 14,
       notes:
         "For births OUTSIDE of New York City. NYC births must be ordered through the NYC Office of Vital Records. Other authorized online vendors may also be available — check the NYS Vital Records website.",
@@ -61,6 +62,7 @@ export const NY: StateVitalRecords = {
     ],
     notes:
       "You must include a legible copy of your ID with all applications.",
+    acceptableIdUrl: "https://www.health.ny.gov/vital_records/birth.htm",
   },
   feeWaivers: [
     {

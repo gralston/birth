@@ -175,6 +175,9 @@ export function generatePlan(
         "If you're unsure of exact details (like county of birth), enter your best guess — the office can often look it up.",
         "If your name has changed, include the name change documentation you gathered.",
         "Sign and date the form.",
+        ...(stateData.applicationFormUrlEs
+          ? [`Formulario en español: ${stateData.applicationFormUrlEs}`]
+          : []),
       ],
     });
   }
@@ -220,11 +223,12 @@ export function generatePlan(
           hours: stateData.office.hours,
           website: stateData.office.website,
         };
+    const inPersonFee = inPerson.fee ?? stateData.fees.certified;
     methodOptions.push({
       method: "inPerson",
       label: "In Person",
       tag: answers.hasGovernmentId ? "Fastest" : "Recommended",
-      cost: `$${stateData.fees.certified}`,
+      cost: `$${inPersonFee}`,
       time: inPerson.processingTime,
       description: answers.hasGovernmentId
         ? `Bring your completed application, ID, and payment.`
@@ -246,9 +250,10 @@ export function generatePlan(
   // require government-issued photo ID for identity verification.
   if (stateData.requestMethods.online && answers.hasGovernmentId) {
     const online = stateData.requestMethods.online;
+    const onlineFee = online.fee ?? stateData.fees.certified;
     const totalCost = online.additionalFee
-      ? `$${stateData.fees.certified} + $${online.additionalFee} service fee`
-      : `$${stateData.fees.certified}`;
+      ? `$${onlineFee} + $${online.additionalFee} service fee`
+      : `$${onlineFee}`;
     methodOptions.push({
       method: "online",
       label: "Online",
@@ -273,11 +278,12 @@ export function generatePlan(
 
   if (stateData.requestMethods.mail) {
     const mail = stateData.requestMethods.mail;
+    const mailFee = mail.fee ?? stateData.fees.certified;
     methodOptions.push({
       method: "mail",
       label: "By Mail",
       tag: "Cheapest",
-      cost: `$${stateData.fees.certified}`,
+      cost: `$${mailFee}`,
       time: mail.processingTime,
       description: answers.hasGovernmentId
         ? `Mail your completed application, a photocopy of your ID, and payment.`

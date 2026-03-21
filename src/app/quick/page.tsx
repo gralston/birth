@@ -209,7 +209,7 @@ function QuickResults({
             title="In Person"
             tag="Fastest"
             tagColor="green"
-            cost={`$${stateData.fees.certified}`}
+            cost={`$${stateData.requestMethods.inPerson.fee ?? stateData.fees.certified}`}
             time={stateData.requestMethods.inPerson.processingTime}
             details={
               countyOffice
@@ -232,8 +232,8 @@ function QuickResults({
             tagColor="blue"
             cost={
               stateData.requestMethods.online.additionalFee
-                ? `$${stateData.fees.certified} + $${stateData.requestMethods.online.additionalFee} fee`
-                : `$${stateData.fees.certified}`
+                ? `$${stateData.requestMethods.online.fee ?? stateData.fees.certified} + $${stateData.requestMethods.online.additionalFee} fee`
+                : `$${stateData.requestMethods.online.fee ?? stateData.fees.certified}`
             }
             time="5–10 business days"
             details={
@@ -256,7 +256,7 @@ function QuickResults({
             title="By Mail"
             tag="Cheapest"
             tagColor="amber"
-            cost={`$${stateData.fees.certified}`}
+            cost={`$${stateData.requestMethods.mail.fee ?? stateData.fees.certified}`}
             time={stateData.requestMethods.mail.processingTime}
             details={`Mail your application, ID copy, and payment to: ${stateData.requestMethods.mail.address}`}
             cta={
@@ -292,7 +292,20 @@ function QuickResults({
                   className="text-blue-600 hover:text-blue-800 underline"
                 >
                   application form
-                </a>{" "}
+                </a>
+                {stateData.applicationFormUrlEs && (
+                  <>
+                    {" / "}
+                    <a
+                      href={stateData.applicationFormUrlEs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 underline"
+                    >
+                      en español
+                    </a>
+                  </>
+                )}{" "}
                 (for mail/in-person)
               </span>
             </div>

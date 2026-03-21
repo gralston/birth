@@ -60,6 +60,12 @@ async function main() {
     if (data.applicationFormUrl) {
       urls.push({ field: "applicationFormUrl", url: data.applicationFormUrl });
     }
+    if (data.requirements.acceptableIdUrl) {
+      urls.push({ field: "acceptableIdUrl", url: data.requirements.acceptableIdUrl });
+    }
+    if (data.requestMethods.online?.vendorListUrl) {
+      urls.push({ field: "vendorListUrl", url: data.requestMethods.online.vendorListUrl });
+    }
 
     for (const { field, url } of urls) {
       process.stdout.write(`  ${code} ${field} ... `);

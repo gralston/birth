@@ -66,6 +66,7 @@ export const CA: StateVitalRecords = {
     ],
     notes:
       "A notarized Sworn Statement (included in VS 111 form) is required. Must include a legible photocopy of your ID.",
+    acceptableIdUrl: "https://www.cdph.ca.gov/Programs/CHSI/Pages/Vital-Records.aspx",
   },
   feeWaivers: [
     {

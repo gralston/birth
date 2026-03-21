@@ -29,6 +29,8 @@ export interface StateVitalRecords {
     online?: {
       url: string;
       provider: "vitalchek" | "state" | "other";
+      /** State fee for online orders, if different from the standard certified fee */
+      fee?: number;
       additionalFee?: number;
       notes?: string;
       /** URL to state page listing all authorized online vendors */
@@ -37,11 +39,15 @@ export interface StateVitalRecords {
     mail?: {
       address: string;
       processingTime: string;
+      /** State fee for mail orders, if different from the standard certified fee */
+      fee?: number;
       notes?: string;
     };
     inPerson?: {
       locations: string;
       processingTime: string;
+      /** State fee for in-person orders, if different from the standard certified fee */
+      fee?: number;
       notes?: string;
     };
     phone?: {
@@ -69,6 +75,8 @@ export interface StateVitalRecords {
   recordsAvailableFrom: number;
   /** URL to downloadable application form PDF */
   applicationFormUrl?: string;
+  /** URL to application form in Spanish, if available */
+  applicationFormUrlEs?: string;
   /** Any special notes or warnings for this state */
   specialNotes?: string[];
   /** Workarounds for people with no ID (the catch-22) */
