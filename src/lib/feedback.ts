@@ -1,4 +1,4 @@
-const REPO = "https://github.com/geoff/birth";
+const REPO = "https://github.com/gralston/birth";
 
 export function getFeedbackUrl(stateName?: string): string {
   const title = stateName
