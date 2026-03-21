@@ -7,7 +7,7 @@ export const KS: StateVitalRecords = {
     name: "Kansas Department of Health and Environment, Office of Vital Statistics",
     address: "1000 SW Jackson Street, Suite 120, Topeka, KS 66612",
     phone: "(785) 296-1400",
-    website: "https://www.kdheks.gov/vital/",
+    website: "https://www.kdhe.ks.gov/1165/Office-of-Vital-Statistics",
     hours: "Mon-Fri 8:00 AM - 5:00 PM CT (closed state holidays)",
   },
   fees: {
@@ -78,7 +78,7 @@ export const KS: StateVitalRecords = {
     ],
     notes:
       "Kansas vital records are restricted records. Applicants must demonstrate a direct and tangible interest in the record. A clear photocopy of valid photo ID (front and back) must accompany all mail requests.",
-    acceptableIdUrl: "https://www.kdheks.gov/vital/birth_info.html",
+    acceptableIdUrl: "https://www.kdhe.ks.gov/1186/Birth-Certificate",
   },
   feeWaivers: [
     {
@@ -105,7 +105,7 @@ export const KS: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1911,
   applicationFormUrl:
-    "https://www.kdheks.gov/vital/download/birth_application.pdf",
+    "https://www.kdhe.ks.gov/DocumentCenter/View/11005/Birth-Application-PDF",
   specialNotes: [
     "Kansas statewide birth registration began on July 1, 1911. For births before 1911, contact the county clerk in the county of birth, as some counties maintained earlier records.",
     "Each certified copy costs $15 regardless of whether additional copies are ordered at the same time.",

@@ -42,7 +42,7 @@ export const MO: StateVitalRecords = {
         "Same day at local offices; varies at state office depending on appointment availability",
       notes:
         "Local public health agencies often provide faster service. Must present valid photo ID in person. Contact your local health department for hours and availability.",
-      localOfficesUrl: "https://health.mo.gov/living/lpha/lphas.php",
+      localOfficesUrl: "https://health.mo.gov/data/vitalrecords/lpha-info.php",
     },
     phone: {
       number: "(866) 550-0768",

@@ -44,6 +44,10 @@ const CIRCUMSTANCES = [
     label: "I am or was recently incarcerated",
   },
   {
+    value: "born-abroad" as Circumstance,
+    label: "I was born outside the United States",
+  },
+  {
     value: "born-before-records" as Circumstance,
     label: "I was born before modern record-keeping",
   },

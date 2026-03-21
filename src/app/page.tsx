@@ -10,7 +10,7 @@ export default function Home() {
             Get Your Birth Certificate
           </h1>
           <p className="text-lg sm:text-xl text-blue-100 mb-10 leading-relaxed">
-            Free guide to ordering your birth certificate in any US state.
+            Free guide to ordering your birth certificate in any US state or territory.
             For voting, passports, REAL ID, and more.
           </p>
 

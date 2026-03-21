@@ -43,7 +43,7 @@ export const CT: StateVitalRecords = {
       notes:
         "Town clerk offices charge $20 per certified copy (long form) or $15 (short form), which is less than the state office fee of $30. Photo ID is required to enter the state office building. Visit the town/city clerk where the birth occurred for fastest and most affordable service.",
       localOfficesUrl:
-        "https://portal.ct.gov/dph/vital-records/town-vital-records-offices",
+        "https://portal.ct.gov/dph/vital-records/contact-us",
     },
     phone: {
       number: "1-800-669-8313",

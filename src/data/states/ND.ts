@@ -7,7 +7,7 @@ export const ND: StateVitalRecords = {
     name: "North Dakota Department of Health and Human Services, Division of Vital Records",
     address: "600 East Boulevard Avenue, Dept. 301, Bismarck, ND 58505-0200",
     phone: "(701) 328-2360",
-    website: "https://www.ndhealth.gov/vital/",
+    website: "https://www.hhs.nd.gov/vital",
     hours: "Mon–Fri 8:00 AM – 5:00 PM CT; closed state holidays",
   },
   fees: {
@@ -79,7 +79,7 @@ export const ND: StateVitalRecords = {
     ],
     notes:
       "North Dakota vital records are not public records. Applicants must demonstrate a direct and tangible interest in the record. A photocopy of valid government-issued photo ID (front and back) must accompany all mail requests. Requests from someone other than the registrant require proof of relationship or legal authority.",
-    acceptableIdUrl: "https://www.ndhealth.gov/vital/birth.htm",
+    acceptableIdUrl: "https://www.hhs.nd.gov/vital/birth",
   },
   feeWaivers: [
     {
@@ -113,7 +113,7 @@ export const ND: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1870,
   applicationFormUrl:
-    "https://www.ndhealth.gov/vital/forms/birth_certificate_application.pdf",
+    "https://www.hhs.nd.gov/vital/vital-records-forms",
   specialNotes: [
     "North Dakota has some birth records dating as far back as 1870, though statewide registration was not consistently enforced until July 1, 1893, when mandatory registration began. Records from 1870 to 1893 may be incomplete — contact the Division of Vital Records for assistance.",
     "North Dakota's birth certificate fees are among the lowest in the nation: $7 for the first certified copy and $4 for each additional copy ordered at the same time.",

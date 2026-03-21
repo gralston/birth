@@ -108,7 +108,7 @@ export const DC: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1874,
   applicationFormUrl:
-    "https://dchealth.dc.gov/sites/default/files/dc/sites/doh/service_content/attachments/Birth%20Certificate%20Application.pdf",
+    "https://dchealth.dc.gov/sites/default/files/dc/sites/doh/publication/attachments/DC%20-%20Birth%20Application%20-%20English.pdf",
   specialNotes: [
     "DC Vital Records maintains birth records from 1874 to present. For records prior to 1874, contact the DC Archives at (202) 727-2054.",
     "DC issues computer-generated certified copies. Long-form (full) and short-form (abstract) copies are available; most agencies and federal applications require the long-form certified copy.",

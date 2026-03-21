@@ -7,7 +7,7 @@ export const NV: StateVitalRecords = {
     name: "Nevada Division of Public and Behavioral Health, Office of Vital Records",
     address: "4150 Technology Way, Suite 104, Carson City, NV 89706",
     phone: "(775) 684-4242",
-    website: "https://dpbh.nv.gov/Programs/BirthDeath/Birth_and_Death_Certificates/",
+    website: "https://www.dpbh.nv.gov/programs/birth-death-marriage-divorce-records/vitalrecords/",
     hours: "Mon–Fri 8:00 AM – 4:00 PM PT (closed weekends and state holidays)",
   },
   fees: {
@@ -44,7 +44,7 @@ export const NV: StateVitalRecords = {
       notes:
         "The Carson City state office and county health district offices accept walk-in requests. Bring valid photo ID and payment. The Southern Nevada Health District in Las Vegas processes requests for Clark County events. The Washoe County Health District in Reno processes requests for Washoe County events. Processing time varies; some offices may issue certificates same day while the state office may take longer.",
       localOfficesUrl:
-        "https://dpbh.nv.gov/Programs/BirthDeath/dta/Links/Birth_and_Death_Links/",
+        "https://www.dpbh.nv.gov/contact/office-locations/birth-death-vital-records-locations/",
     },
     phone: {
       number: "(877) 803-0609",
@@ -86,7 +86,7 @@ export const NV: StateVitalRecords = {
     notes:
       "For mail requests, include a clear photocopy of the front and back of your valid government-issued photo ID. For in-person requests, present original photo ID. If you do not have a primary ID, you may present two forms of secondary identification. All applicants must demonstrate a direct and tangible interest in the record per NRS 440.650.",
     acceptableIdUrl:
-      "https://dpbh.nv.gov/Programs/BirthDeath/Birth_and_Death_Certificates/",
+      "https://www.dpbh.nv.gov/programs/birth-death-marriage-divorce-records/birth-death-vital-records-faqs/",
   },
   feeWaivers: [
     {
@@ -126,7 +126,7 @@ export const NV: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1911,
   applicationFormUrl:
-    "https://dpbh.nv.gov/uploadedFiles/dpbhnvgov/content/Programs/BirthDeath/dta/Forms/Birth%20Certificate%20Application.pdf",
+    "https://www.dpbh.nv.gov/programs/birth-death-marriage-divorce-records/birth-death-vital-records-forms/",
   specialNotes: [
     "Nevada statewide birth registration began on July 1, 1911. For births before 1911, contact the county recorder in the county where the birth occurred, as some counties maintained earlier records.",
     "The Southern Nevada Health District (SNHD) in Las Vegas serves as the local registrar for Clark County and can issue birth certificates for births that occurred in Clark County. SNHD may have different hours and fees; contact them at (702) 759-1010.",

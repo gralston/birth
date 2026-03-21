@@ -8,7 +8,7 @@ export const ME: StateVitalRecords = {
     address: "11 State House Station, 220 Capitol Street, Augusta, ME 04333-0011",
     phone: "(207) 287-3181",
     website:
-      "https://www.maine.gov/dhhs/mecdc/public-health-systems/data-research/vital-records/",
+      "https://www.maine.gov/dhhs/mecdc/vital-records",
     hours: "Mon–Fri 9:00 AM – 4:00 PM ET",
   },
   fees: {
@@ -43,7 +43,7 @@ export const ME: StateVitalRecords = {
       notes:
         "Municipal (city/town) clerks maintain birth records for events that occurred in their jurisdiction. Fees at municipal offices may differ from state fees. Call ahead to confirm hours and availability.",
       localOfficesUrl:
-        "https://www.maine.gov/local/",
+        "https://www.maine.gov/sos/elections-voting/find-a-municipal-clerk-or-registrar",
     },
     phone: {
       number: "1-866-310-2816",
@@ -81,7 +81,7 @@ export const ME: StateVitalRecords = {
     notes:
       "Maine birth records are restricted to eligible applicants. You must demonstrate a direct and legitimate interest. A photocopy of a valid government-issued photo ID is required with all requests. If you do not have a photo ID, two forms of secondary identification may be accepted.",
     acceptableIdUrl:
-      "https://www.maine.gov/dhhs/mecdc/public-health-systems/data-research/vital-records/order/birth.shtml",
+      "https://www.maine.gov/dhhs/mecdc/vital-records/birth-records",
   },
   feeWaivers: [
     {
@@ -108,7 +108,7 @@ export const ME: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1923,
   applicationFormUrl:
-    "https://www.maine.gov/dhhs/mecdc/public-health-systems/data-research/vital-records/documents/VR-18-Birth-Request.pdf",
+    "https://www.maine.gov/dhhs/mecdc/vital-records/request-documents",
   specialNotes: [
     "Maine has a dual system: both the state Office of Vital Statistics in Augusta and municipal (city/town) clerks can issue birth certificates. Municipal clerks hold records for events in their jurisdiction.",
     "Municipal clerk fees may be lower than the state office fee. Contact the clerk in the municipality where the birth occurred for their current rates.",

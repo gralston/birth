@@ -7,7 +7,7 @@ export const AR: StateVitalRecords = {
     name: "Arkansas Department of Health, Division of Vital Records",
     address: "4815 West Markham Street, Slot 44, Little Rock, AR 72205",
     phone: "(501) 661-2336",
-    website: "https://www.healthy.arkansas.gov/programs-services/topics/certificates-background-vital-records",
+    website: "https://healthy.arkansas.gov/programs-services/certificates-records/",
     hours: "Mon–Fri 8:00 AM – 4:30 PM CT; excludes state holidays",
   },
   fees: {
@@ -80,7 +80,7 @@ export const AR: StateVitalRecords = {
     notes:
       "A valid government-issued photo ID is required for all requests. If someone other than the registrant is requesting, proof of relationship or legal authority (court order, power of attorney) must be provided. The application must be notarized if no photo ID is submitted.",
     acceptableIdUrl:
-      "https://www.healthy.arkansas.gov/programs-services/topics/birth-certificates",
+      "https://healthy.arkansas.gov/programs-services/certificates-records/order-birth-records/",
   },
   feeWaivers: [
     {
@@ -112,7 +112,7 @@ export const AR: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1914,
   applicationFormUrl:
-    "https://www.healthy.arkansas.gov/images/uploads/pdf/BirthCert_App_2019.pdf",
+    "https://healthy.arkansas.gov/wp-content/uploads/Application_Birth_Certificate_Vital_Records.pdf",
   specialNotes: [
     "Arkansas began statewide birth registration on February 1, 1914. Records before that date are incomplete — contact the county clerk's office in the county where the birth occurred for older records.",
     "Heirloom (commemorative) birth certificates are available and can be ordered through VitalChek or the state office.",

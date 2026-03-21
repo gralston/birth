@@ -7,7 +7,7 @@ export const NM: StateVitalRecords = {
     name: "New Mexico Department of Health, Bureau of Vital Records and Health Statistics",
     address: "P.O. Box 26110, Santa Fe, NM 87502",
     phone: "(866) 534-0051",
-    website: "https://www.nmhealth.org/about/erd/bvrhs/vrb/",
+    website: "https://www.nmhealth.org/about/erd/bvrhs/vrp/",
     hours:
       "Mon-Fri 8:00 AM - 5:00 PM MT (closed weekends and state holidays)",
   },
@@ -45,7 +45,7 @@ export const NM: StateVitalRecords = {
       notes:
         "Bring a valid government-issued photo ID, completed application form, and payment. At the state office, walk-in requests are accepted during business hours. County clerk offices may have different hours and fees. Call ahead to confirm availability.",
       localOfficesUrl:
-        "https://www.nmhealth.org/about/erd/bvrhs/vrb/",
+        "https://www.nmhealth.org/about/erd/bvrhs/vrp/locations/",
     },
     phone: {
       number: "(877) 284-0942",
@@ -86,7 +86,7 @@ export const NM: StateVitalRecords = {
     notes:
       "New Mexico requires proof of identity and proof of eligibility for all birth certificate requests. For mail requests, include a photocopy of the front and back of a valid government-issued photo ID. For in-person requests, present the original ID. If the requestor is not the registrant, documentation proving the relationship (e.g., court order, marriage certificate, or birth certificate showing parentage) must also be provided.",
     acceptableIdUrl:
-      "https://www.nmhealth.org/about/erd/bvrhs/vrb/birth/",
+      "https://www.nmhealth.org/about/erd/bvrhs/vrp/birth/",
   },
   feeWaivers: [
     {
@@ -125,7 +125,7 @@ export const NM: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1920,
   applicationFormUrl:
-    "https://www.nmhealth.org/publication/view/form/558/",
+    "https://www.nmhealth.org/publication/view/form/610/",
   specialNotes: [
     "Statewide birth registration in New Mexico began in 1920, though compliance was not universal until the late 1930s. For births before 1920, contact the county clerk in the county of birth, as some counties maintained earlier records. Church and baptismal records may also serve as evidence of birth.",
     "New Mexico allows birth certificate amendments for gender marker changes. A court order is required for legal name and gender changes on a birth certificate. Applications are processed through the Bureau of Vital Records.",

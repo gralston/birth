@@ -42,7 +42,7 @@ export const IN: StateVitalRecords = {
       notes:
         "Local health departments are the primary in-person option. Fees and accepted payment methods may vary by county. Contact your local office before visiting.",
       localOfficesUrl:
-        "https://www.in.gov/health/vital-records/how-to-apply/local-health-departments/",
+        "https://www.in.gov/health/vital-records/order-now/",
     },
     phone: {
       number: "1-866-849-1888",
@@ -75,7 +75,7 @@ export const IN: StateVitalRecords = {
     notes:
       "All applicants must provide a photocopy of a valid government-issued photo ID. If you do not have a primary photo ID, provide two forms of secondary identification.",
     acceptableIdUrl:
-      "https://www.in.gov/health/vital-records/how-to-apply/birth-certificates/",
+      "https://www.in.gov/health/vital-records/birth-information/",
   },
   feeWaivers: [
     {
@@ -105,7 +105,7 @@ export const IN: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1907,
   applicationFormUrl:
-    "https://www.in.gov/health/vital-records/files/Birth-Certificate-Application-49666.pdf",
+    "https://forms.in.gov/Download.aspx?id=5623",
   specialNotes: [
     "Indiana birth certificates are primarily issued through local health departments for in-person requests — the state office in Indianapolis does not offer walk-in counter service.",
     "For births before 1907, contact the local county health department or county clerk in the county where the birth occurred.",

@@ -7,7 +7,7 @@ export const CO: StateVitalRecords = {
     name: "Colorado Department of Public Health and Environment, Vital Records Section",
     address: "4300 Cherry Creek Drive South, Denver, CO 80246",
     phone: "(303) 692-2200",
-    website: "https://cdphe.colorado.gov/certified-birth-certificates",
+    website: "https://cdphe.colorado.gov/vitalrecords",
     hours:
       "Mon–Fri 8:00 AM – 5:00 PM MT (closed weekends and state holidays)",
   },
@@ -25,7 +25,7 @@ export const CO: StateVitalRecords = {
   },
   requestMethods: {
     online: {
-      url: "https://www.vitalchek.com/v/birth-certificates/colorado/colorado-vital-records",
+      url: "https://www.vitalchek.com/v/birth-certificates/colorado/colorado-vital-records-section",
       provider: "vitalchek",
       additionalFee: 11.75,
       notes:
@@ -86,7 +86,7 @@ export const CO: StateVitalRecords = {
     notes:
       "Applicants must provide a clear photocopy of the front and back of a valid government-issued photo ID for mail requests. For in-person requests, present the original ID. If you do not have a primary photo ID, you may provide two forms of secondary identification, or have your signature notarized on the application.",
     acceptableIdUrl:
-      "https://cdphe.colorado.gov/certified-birth-certificates",
+      "https://cdphe.colorado.gov/order-certificate-now",
   },
   feeWaivers: [
     {
@@ -127,9 +127,9 @@ export const CO: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1910,
   applicationFormUrl:
-    "https://drive.google.com/file/d/1pHi3bGCF3MSN1rL-D0qFy7cFH3V6GTIF/view",
+    "https://cdphe.colorado.gov/order-certificate-now",
   applicationFormUrlEs:
-    "https://cdphe.colorado.gov/vital-records-forms",
+    "https://cdphe.colorado.gov/vitalrecords",
   specialNotes: [
     "Statewide birth registration in Colorado began in 1910 and was generally complied with by the 1940s. For births before 1910, contact the county clerk and recorder in the county of birth, as some counties maintained earlier records.",
     "Colorado allows birth certificate amendments for gender marker changes without requiring surgery, per CRS § 25-2-115(4). A court order or a signed statement from a licensed healthcare provider is required.",

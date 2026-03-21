@@ -108,7 +108,7 @@ export const DE: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1861,
   applicationFormUrl:
-    "https://dhss.delaware.gov/dhss/dph/ss/files/bthcertappform.pdf",
+    "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/birth.pdf",
   specialNotes: [
     "Delaware birth records from 1861 to present are maintained by the Office of Vital Statistics. For records before 1861, contact the Delaware Public Archives at (302) 744-5000.",
     "Delaware is a small state with a single vital records office in Dover — there are no branch offices. Plan travel accordingly if requesting in person.",

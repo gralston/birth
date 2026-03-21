@@ -27,7 +27,7 @@ export const GA: StateVitalRecords = {
       additionalFee: 8,
       notes:
         "ROVER is Georgia's state portal. GoCertificates and VitalChek are also authorized vendors. Processing takes up to 10 weeks regardless of vendor — expedited shipping ($16) only speeds delivery, not processing.",
-      vendorListUrl: "https://dph.georgia.gov/ways-request-vital-record/online-ordering",
+      vendorListUrl: "https://dph.georgia.gov/order-certificate-online",
     },
     mail: {
       address:

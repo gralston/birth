@@ -42,7 +42,7 @@ export const MD: StateVitalRecords = {
       notes:
         "Walk-in service available at the Baltimore office. Bring valid photo ID. Appointments are not required but recommended during busy periods.",
       localOfficesUrl:
-        "https://health.maryland.gov/vsa/Pages/localvitalrecordsoffices.aspx",
+        "https://health.maryland.gov/vsa/Pages/lhd.aspx",
     },
     phone: {
       number: "1-877-572-6332",
@@ -77,7 +77,7 @@ export const MD: StateVitalRecords = {
     notes:
       "Maryland requires proof of identity and proof of relationship. If you are not the registrant, you must show documentation proving your relationship (e.g., your own birth certificate showing shared parentage, court order of guardianship, power of attorney).",
     acceptableIdUrl:
-      "https://health.maryland.gov/vsa/Pages/RequiredIdentification.aspx",
+      "https://health.maryland.gov/vsa/Pages/idreqs.aspx",
   },
   feeWaivers: [
     {
@@ -111,7 +111,7 @@ export const MD: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1898,
   applicationFormUrl:
-    "https://health.maryland.gov/vsa/Documents/birth-certificate-application.pdf",
+    "https://health.maryland.gov/vsa/Documents/Certificates/Birth/birth%20cert%20appl_20211007.pdf",
   specialNotes: [
     "Maryland birth records from 1898 to present are maintained by the Division of Vital Records. For records before 1898, contact the Maryland State Archives at (410) 260-6400 or visit msa.maryland.gov.",
     "Baltimore City birth records from 1875–1941 are available through the Baltimore City Archives — contact (410) 396-4863.",

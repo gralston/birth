@@ -8,7 +8,7 @@ export const ID_: StateVitalRecords = {
     address: "450 West State Street, 1st Floor, Boise, ID 83702",
     phone: "(208) 334-5988",
     website:
-      "https://healthandwelfare.idaho.gov/services/birth-and-death-certificates",
+      "https://healthandwelfare.idaho.gov/services-programs/birth-marriage-death-records",
     hours:
       "Mon–Fri 8:00 AM – 5:00 PM MT (closed weekends and state holidays)",
   },
@@ -25,7 +25,7 @@ export const ID_: StateVitalRecords = {
   },
   requestMethods: {
     online: {
-      url: "https://www.vitalchek.com/v/vital-records/idaho/idaho-vital-records",
+      url: "https://www.vitalchek.com/v/vital-records/idaho/idaho-bureau-of-vital-records",
       provider: "vitalchek",
       additionalFee: 13.25,
       notes:
@@ -46,7 +46,7 @@ export const ID_: StateVitalRecords = {
       notes:
         "Bring a valid government-issued photo ID, completed application form, and payment. Local health district offices can process requests but availability and wait times vary — call ahead to confirm. The Boise office accepts walk-in requests during business hours.",
       localOfficesUrl:
-        "https://healthandwelfare.idaho.gov/about-dhw/division-public-health-districts",
+        "https://healthandwelfare.idaho.gov/health-wellness/community-health/public-health-districts",
     },
     phone: {
       number: "1-800-241-8322",
@@ -83,7 +83,7 @@ export const ID_: StateVitalRecords = {
     notes:
       "Idaho restricts access to birth records less than 100 years old to the registrant, parents, legal guardians, and other eligible applicants as defined by Idaho Code § 39-270. A photocopy of valid government-issued photo ID is required for all mail requests. For in-person requests, present the original ID.",
     acceptableIdUrl:
-      "https://healthandwelfare.idaho.gov/services/birth-and-death-certificates",
+      "https://healthandwelfare.idaho.gov/services-programs/birth-marriage-death-records/order-record",
   },
   feeWaivers: [
     {
@@ -110,7 +110,7 @@ export const ID_: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1911,
   applicationFormUrl:
-    "https://healthandwelfare.idaho.gov/sites/default/files/2023-06/Birth-Certificate-Application.pdf",
+    "https://healthandwelfare.idaho.gov/services-programs/birth-marriage-death-records/order-record",
   specialNotes: [
     "Idaho statewide birth registration began in 1911. For births before 1911, contact the county recorder in the county of birth, as some counties maintained earlier records.",
     "VitalChek is the only authorized third-party vendor for online and phone orders in Idaho.",

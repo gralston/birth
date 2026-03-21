@@ -124,7 +124,7 @@ export function generatePlan(
       description: circumstanceWaivers
         .map(
           (w) =>
-            `**${w.eligibility}:** ${w.howToClaim}${w.citation ? ` (${w.citation})` : ""}`
+            `${w.eligibility}: ${w.howToClaim}${w.citation ? ` (${w.citation})` : ""}`
         )
         .join("\n\n"),
       tips: [
@@ -287,7 +287,7 @@ export function generatePlan(
           ? ["Best option when you don't have a photo ID — staff can help you find a solution."]
           : []),
         ...(countyOffice
-          ? [`This is your local office based on your zip code. The state office in Sacramento also accepts walk-ins.`]
+          ? [`This is your local office based on your zip code. The ${stateData.office.name} also accepts requests.`]
           : []),
       ],
     });

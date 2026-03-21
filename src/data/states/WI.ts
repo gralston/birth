@@ -32,7 +32,7 @@ export const WI: StateVitalRecords = {
         "Wisconsin Vital Records Office, P.O. Box 309, Madison, WI 53701-0309",
       processingTime: "2–4 weeks",
       notes:
-        "Include completed Form F-05036 application, photocopy of valid ID, and check or money order payable to 'Wisconsin Vital Records.' Write the registrant's name on the memo line.",
+        "Include completed Form F-05291 application, photocopy of valid ID, and check or money order payable to 'Wisconsin Vital Records.' Write the registrant's name on the memo line.",
     },
     inPerson: {
       locations:
@@ -41,7 +41,7 @@ export const WI: StateVitalRecords = {
       notes:
         "County Register of Deeds offices are often more convenient and may have shorter wait times. Call ahead to confirm hours and availability.",
       localOfficesUrl:
-        "https://www.wrdaonline.org/find-a-register",
+        "https://www.wrdaonline.org/counties",
     },
     phone: {
       number: "(608) 266-1373",
@@ -78,7 +78,7 @@ export const WI: StateVitalRecords = {
     notes:
       "If you lack a primary photo ID, you must provide two secondary documents that together verify your identity and address. All photocopies of ID must be legible.",
     acceptableIdUrl:
-      "https://www.dhs.wisconsin.gov/vitalrecords/id-requirements.htm",
+      "https://www.dhs.wisconsin.gov/vitalrecords/record.htm",
   },
   feeWaivers: [
     {
@@ -102,9 +102,9 @@ export const WI: StateVitalRecords = {
   ],
   recordsAvailableFrom: 1907,
   applicationFormUrl:
-    "https://www.dhs.wisconsin.gov/forms/f0/f05036.pdf",
+    "https://www.dhs.wisconsin.gov/forms/f0/f05291.pdf",
   applicationFormUrlEs:
-    "https://www.dhs.wisconsin.gov/forms/f0/f05036s.pdf",
+    "https://www.dhs.wisconsin.gov/forms/f0/f05291s.pdf",
   specialNotes: [
     "County Register of Deeds offices can issue certified copies and are often faster and more convenient than the state office — check your county's Register of Deeds first.",
     "For births before October 1, 1907, contact the Register of Deeds in the county where the birth occurred, as the state office may not have those records.",
