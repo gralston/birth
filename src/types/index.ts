@@ -149,6 +149,8 @@ export interface ActionStep {
   description: string;
   /** Link to form, office, or resource */
   link?: { url: string; label: string };
+  /** Secondary link (e.g., Spanish-language form) */
+  secondaryLink?: { url: string; label: string };
   /** Whether this step is critical / blocking */
   critical?: boolean;
   /** Estimated time or processing duration */

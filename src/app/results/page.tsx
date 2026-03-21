@@ -314,16 +314,28 @@ function ResultsContent() {
                   )}
                 </div>
 
-                {/* Link */}
+                {/* Links */}
                 {step.link && (
-                  <a
-                    href={step.link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-blue-600 hover:text-blue-800 font-medium mb-3"
-                  >
-                    {step.link.label} &rarr;
-                  </a>
+                  <div className="mb-3 space-y-1">
+                    <a
+                      href={step.link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-blue-600 hover:text-blue-800 font-medium"
+                    >
+                      {step.link.label} &rarr;
+                    </a>
+                    {step.secondaryLink && (
+                      <a
+                        href={step.secondaryLink.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-blue-600 hover:text-blue-800 font-medium text-sm"
+                      >
+                        {step.secondaryLink.label} &rarr;
+                      </a>
+                    )}
+                  </div>
                 )}
 
                 {/* Tips */}

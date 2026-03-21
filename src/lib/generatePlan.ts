@@ -170,14 +170,14 @@ export function generatePlan(
         url: stateData.applicationFormUrl,
         label: "Download application form (PDF)",
       },
+      secondaryLink: stateData.applicationFormUrlEs
+        ? { url: stateData.applicationFormUrlEs, label: "Formulario en español (PDF)" }
+        : undefined,
       tips: [
         "Fill out every field — incomplete applications cause delays.",
         "If you're unsure of exact details (like county of birth), enter your best guess — the office can often look it up.",
         "If your name has changed, include the name change documentation you gathered.",
         "Sign and date the form.",
-        ...(stateData.applicationFormUrlEs
-          ? [`Formulario en español: ${stateData.applicationFormUrlEs}`]
-          : []),
       ],
     });
   }
