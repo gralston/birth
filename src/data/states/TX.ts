@@ -109,7 +109,6 @@ export const TX: StateVitalRecords = {
     "For births before 1903, contact the county clerk in the county of birth.",
     "Texas accepts a certified birth certificate as a supporting document for voters who face a 'reasonable impediment' to obtaining photo ID.",
   ],
-  countyOfficesAvailable: true,
   noIdWorkaround:
     "If you have no photo ID, Texas allows a 'reasonable impediment' declaration for voting purposes. For obtaining the birth certificate itself, contact DSHS at (888) 963-7111 to discuss alternative verification options. A homeless services provider may also be able to assist.",
   lastVerified: "2026-03-21",

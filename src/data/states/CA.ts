@@ -93,6 +93,5 @@ export const CA: StateVitalRecords = {
   ],
   noIdWorkaround:
     "If you have no government-issued photo ID, you can submit a notarized Sworn Statement with two forms of secondary ID (utility bill, bank statement, etc.). A homeless services provider can also vouch for your identity using the CDPH affidavit form.",
-  countyOfficesAvailable: true,
   lastVerified: "2026-03-21",
 };
