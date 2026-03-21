@@ -9,6 +9,7 @@ import { generatePlan } from "@/lib/generatePlan";
 import { findCountyOffice, hasCountyData } from "@/data/countyOffices";
 import { getCountyFromZip } from "@/lib/zipToCounty";
 import { getFeedbackUrl } from "@/lib/feedback";
+import { formatFee } from "@/lib/format";
 
 function ResultsContent() {
   const params = useSearchParams();
@@ -105,7 +106,7 @@ function ResultsContent() {
           {stateData.feeWaivers.some((w) => w.forReason === answers.reason)
             ? ` Birth certificate fee: waived!`
             : stateData.fees.certified
-              ? ` Birth certificate fee: $${stateData.fees.certified}.`
+              ? ` Birth certificate fee: ${formatFee(stateData.fees.certified)}.`
               : ``}
         </p>
       </div>

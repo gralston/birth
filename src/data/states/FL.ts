@@ -67,6 +67,30 @@ export const FL: StateVitalRecords = {
   },
   feeWaivers: [
     {
+      eligibility: "Unaccompanied homeless youth (age 16+)",
+      howToClaim:
+        "Fee waived for unaccompanied homeless youth certified under Section 743.067 by a school district McKinney-Vento liaison.",
+      citation: "Florida Statute § 382.0255; HB 1577 (2022)",
+    },
+    {
+      eligibility: "Former foster care youth",
+      howToClaim:
+        "Fee waived for young adults who are, or were at age 18, in the custody of the Department of Children and Families.",
+      citation: "Florida Statute § 382.0255",
+    },
+    {
+      eligibility: "Inmates (re-entry)",
+      howToClaim:
+        "Fee waived for purposes of an inmate acquiring a state identification card before release.",
+      citation: "Florida Statute § 382.0255",
+    },
+    {
+      eligibility: "Juvenile offenders",
+      howToClaim:
+        "Fee waived for juvenile offenders receiving services from the Department of Juvenile Justice.",
+      citation: "Florida Statute § 382.0255",
+    },
+    {
       eligibility: "Veterans (for VA purposes)",
       howToClaim:
         "Records for Veterans Administration purposes are provided at no charge.",
@@ -83,5 +107,5 @@ export const FL: StateVitalRecords = {
   ],
   noIdWorkaround:
     "Florida requires valid photo ID for all birth certificate requests and does not publish a list of alternatives. If you have no photo ID, call the Bureau of Vital Statistics at (904) 359-6900 to ask about options. An eligible family member with photo ID can request on your behalf using a notarized Affidavit to Release a Birth Certificate. Organizations like Spread the Vote (spreadthevote.org) may also be able to help.",
-  lastVerified: "unverified",
+  lastVerified: "2026-03-21",
 };

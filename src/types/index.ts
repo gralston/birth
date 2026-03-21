@@ -49,6 +49,8 @@ export interface StateVitalRecords {
       /** State fee for in-person orders, if different from the standard certified fee */
       fee?: number;
       notes?: string;
+      /** URL to a directory of local offices that can issue certificates */
+      localOfficesUrl?: string;
     };
     phone?: {
       number: string;

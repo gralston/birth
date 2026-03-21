@@ -29,7 +29,7 @@ export const CA: StateVitalRecords = {
     mail: {
       address:
         "California Department of Public Health, Vital Records – MS 5103, P.O. Box 997410, Sacramento, CA 95899-7410",
-      processingTime: "Varies; check CDPH website for current wait times",
+      processingTime: "8–16 weeks typical",
       notes:
         "Include a completed VS 111 form, payment, and a copy of your ID.",
     },
@@ -85,6 +85,8 @@ export const CA: StateVitalRecords = {
   recordsAvailableFrom: 1905,
   applicationFormUrl:
     "https://www.cdph.ca.gov/Programs/CHSI/CDPH%20Document%20Library/VS111.pdf",
+  applicationFormUrlEs:
+    "https://www.cdph.ca.gov/CDPH%20Document%20Library/ControlledForms/VS111sp.pdf",
   specialNotes: [
     "California maintains records from July 1, 1905. For births before that date, contact the county recorder in the county of birth.",
     "Certified copies include a security watermark and are accepted for all legal purposes.",
@@ -92,5 +94,5 @@ export const CA: StateVitalRecords = {
   noIdWorkaround:
     "If you have no government-issued photo ID, you can submit a notarized Sworn Statement with two forms of secondary ID (utility bill, bank statement, etc.). A homeless services provider can also vouch for your identity using the CDPH affidavit form.",
   countyOfficesAvailable: true,
-  lastVerified: "unverified",
+  lastVerified: "2026-03-21",
 };

@@ -94,8 +94,11 @@ export default function IntakeWizard() {
       setCurrentStep((s) => s + 1);
     } else {
       // Submit — encode answers as URL params
+      // Derive hasId from circumstances: if they didn't check "no-id", they have ID
+      const hasId = !answers.circumstances!.includes("no-id");
       const params = new URLSearchParams({
         state: answers.birthState!,
+        hasId: String(hasId),
         reason: answers.reason!,
         circ: answers.circumstances!.join(","),
       });

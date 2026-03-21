@@ -66,6 +66,31 @@ export const NY: StateVitalRecords = {
   },
   feeWaivers: [
     {
+      eligibility: "Free birth certificate for voter eligibility",
+      howToClaim:
+        "No fee when a birth certificate is required by a board of elections for determining voter eligibility.",
+      citation: "NY Public Health Law § 4174",
+      forReason: "voter-id",
+    },
+    {
+      eligibility: "People receiving public assistance (indigency/homelessness)",
+      howToClaim:
+        "No fee for birth certificates to be used for 'purposes of public relief.' This covers individuals receiving Medicaid, SNAP, TANF, or experiencing homelessness. Contact your caseworker or a legal aid organization like the Coalition for the Homeless to request on this basis.",
+      citation: "NY Public Health Law § 4174",
+    },
+    {
+      eligibility: "Incarcerated individuals (re-entry)",
+      howToClaim:
+        "No fee when requested by the Department of Corrections and Community Supervision or a local correctional facility for an incarcerated individual in anticipation of release.",
+      citation: "NY Public Health Law § 4174",
+    },
+    {
+      eligibility: "School entrance or employment certificates",
+      howToClaim:
+        "No fee when the record is needed for school entrance or an employment certificate.",
+      citation: "NY Public Health Law § 4174",
+    },
+    {
       eligibility: "Veterans (for VA purposes)",
       howToClaim:
         "Records for Veterans Administration purposes are provided at no charge.",
@@ -79,5 +104,5 @@ export const NY: StateVitalRecords = {
   ],
   noIdWorkaround:
     "If you have no photo ID, contact the local registrar or NYS Vital Records at (855) 322-1022 to discuss alternative documentation. Legal aid organizations like the City Bar Justice Center's Vital Records Project can also assist.",
-  lastVerified: "unverified",
+  lastVerified: "2026-03-21",
 };

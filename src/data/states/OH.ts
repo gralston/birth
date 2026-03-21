@@ -31,10 +31,11 @@ export const OH: StateVitalRecords = {
     },
     inPerson: {
       locations:
-        "Columbus state office and local city or county health departments",
-      processingTime: "Same day at many local offices",
+        "State office at 4200 Surface Road, Columbus, OH (Mon–Fri 10 AM – 2 PM) and 100+ local city/county health departments",
+      processingTime: "Same day at state office and most local offices",
       notes:
-        "City and county health departments may have their own fees and processes — contact your local office.",
+        "Local health departments may have their own fees and processes. The state office in Columbus accepts walk-ins with credit card payment.",
+      localOfficesUrl: "https://odh.ohio.gov/know-our-programs/vital-statistics/resources/vs-localvsdirectory",
     },
   },
   requirements: {
@@ -64,12 +65,14 @@ export const OH: StateVitalRecords = {
     },
   ],
   recordsAvailableFrom: 1908,
+  applicationFormUrl:
+    "https://odh.ohio.gov/know-our-programs/vital-statistics/How-to-Order-Certificates",
   specialNotes: [
     "Ohio vital records are managed at both the state and local levels. Your local city or county health department may be faster for in-person requests.",
     "For births before 1908, contact the probate court in the county of birth.",
     "Ohio requires strict photo ID requirements for voter ID (as of 2024).",
   ],
   noIdWorkaround:
-    "Contact the Bureau of Vital Statistics at (614) 466-2531 for guidance if you lack a photo ID. Local health departments may have different verification options.",
-  lastVerified: "unverified",
+    "Ohio requires a photocopy of a valid photo ID (both sides) with all applications. If you lack a photo ID, visit a local health department in person — staff may be able to work with you on alternative verification. You can also contact the Bureau of Vital Statistics at (614) 466-2531 to discuss options. Organizations like Ohio Legal Help (ohiolegalhelp.org) can provide guidance.",
+  lastVerified: "2026-03-21",
 };

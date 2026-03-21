@@ -31,7 +31,7 @@ export const TX: StateVitalRecords = {
     mail: {
       address:
         "Vital Statistics, P.O. Box 12040, Austin, TX 78711-2040",
-      processingTime: "Check DSHS website for current processing times",
+      processingTime: "4–6 weeks typical",
       notes:
         "Include completed application, payment, and a copy of a valid government-issued photo ID.",
     },
@@ -102,6 +102,8 @@ export const TX: StateVitalRecords = {
   recordsAvailableFrom: 1903,
   applicationFormUrl:
     "https://www.dshs.texas.gov/sites/default/files/vs/doc/Texas-Birth-Certificate-Application.pdf",
+  applicationFormUrlEs:
+    "https://www.dshs.texas.gov/sites/default/files/vs/doc/Texas-Birth-Certificate-Application-sp.pdf",
   specialNotes: [
     "Texas county clerks can issue birth certificates for births in their county — this is often the fastest option.",
     "For births before 1903, contact the county clerk in the county of birth.",
@@ -110,5 +112,5 @@ export const TX: StateVitalRecords = {
   countyOfficesAvailable: true,
   noIdWorkaround:
     "If you have no photo ID, Texas allows a 'reasonable impediment' declaration for voting purposes. For obtaining the birth certificate itself, contact DSHS at (888) 963-7111 to discuss alternative verification options. A homeless services provider may also be able to assist.",
-  lastVerified: "unverified",
+  lastVerified: "2026-03-21",
 };

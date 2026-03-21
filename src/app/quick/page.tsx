@@ -8,6 +8,7 @@ import { hasCountyData, findCountyOffice } from "@/data/countyOffices";
 import { getCountyFromZip } from "@/lib/zipToCounty";
 import { CountyOffice, StateVitalRecords } from "@/types";
 import { getFeedbackUrl } from "@/lib/feedback";
+import { formatFee } from "@/lib/format";
 
 export default function QuickPage() {
   const [stateCode, setStateCode] = useState("");
@@ -209,7 +210,7 @@ function QuickResults({
             title="In Person"
             tag="Fastest"
             tagColor="green"
-            cost={`$${stateData.requestMethods.inPerson.fee ?? stateData.fees.certified}`}
+            cost={formatFee(stateData.requestMethods.inPerson.fee ?? stateData.fees.certified)}
             time={stateData.requestMethods.inPerson.processingTime}
             details={
               countyOffice
@@ -219,7 +220,9 @@ function QuickResults({
             cta={
               countyOffice?.website
                 ? { url: countyOffice.website, label: "Office website" }
-                : undefined
+                : stateData.requestMethods.inPerson?.localOfficesUrl
+                  ? { url: stateData.requestMethods.inPerson.localOfficesUrl, label: "Find a local office" }
+                  : undefined
             }
           />
         )}
@@ -232,8 +235,8 @@ function QuickResults({
             tagColor="blue"
             cost={
               stateData.requestMethods.online.additionalFee
-                ? `$${stateData.requestMethods.online.fee ?? stateData.fees.certified} + $${stateData.requestMethods.online.additionalFee} fee`
-                : `$${stateData.requestMethods.online.fee ?? stateData.fees.certified}`
+                ? `${formatFee(stateData.requestMethods.online.fee ?? stateData.fees.certified)} + ${formatFee(stateData.requestMethods.online.additionalFee)} fee`
+                : formatFee(stateData.requestMethods.online.fee ?? stateData.fees.certified)
             }
             time="5–10 business days"
             details={
@@ -256,7 +259,7 @@ function QuickResults({
             title="By Mail"
             tag="Cheapest"
             tagColor="amber"
-            cost={`$${stateData.requestMethods.mail.fee ?? stateData.fees.certified}`}
+            cost={formatFee(stateData.requestMethods.mail.fee ?? stateData.fees.certified)}
             time={stateData.requestMethods.mail.processingTime}
             details={`Mail your application, ID copy, and payment to: ${stateData.requestMethods.mail.address}`}
             cta={
@@ -278,7 +281,7 @@ function QuickResults({
           </div>
           <div className="flex items-start gap-2">
             <span className="text-slate-400 mt-0.5">-</span>
-            <span>Payment of ${stateData.fees.certified} ({stateData.fees.paymentMethods.join(", ")})</span>
+            <span>Payment of {formatFee(stateData.fees.certified)} ({stateData.fees.paymentMethods.join(", ")})</span>
           </div>
           {stateData.applicationFormUrl && (
             <div className="flex items-start gap-2">

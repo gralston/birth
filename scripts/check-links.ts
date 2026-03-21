@@ -66,6 +66,12 @@ async function main() {
     if (data.requestMethods.online?.vendorListUrl) {
       urls.push({ field: "vendorListUrl", url: data.requestMethods.online.vendorListUrl });
     }
+    if (data.requestMethods.inPerson?.localOfficesUrl) {
+      urls.push({ field: "localOfficesUrl", url: data.requestMethods.inPerson.localOfficesUrl });
+    }
+    if (data.applicationFormUrlEs) {
+      urls.push({ field: "applicationFormUrlEs", url: data.applicationFormUrlEs });
+    }
 
     for (const { field, url } of urls) {
       process.stdout.write(`  ${code} ${field} ... `);

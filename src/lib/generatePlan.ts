@@ -1,4 +1,5 @@
 import { ActionStep, CountyOffice, IntakeAnswers, RequestMethodOption, StateVitalRecords } from "@/types";
+import { formatFee } from "@/lib/format";
 
 /**
  * Generate a personalized action plan based on user's intake answers
@@ -23,6 +24,23 @@ export function generatePlan(
   let order = 1;
 
   // --- BLOCKERS FIRST ---
+
+  if (answers.circumstances.includes("born-abroad")) {
+    steps.push({
+      order: order++,
+      title: "You May Need a Consular Report of Birth, Not a State Certificate",
+      description:
+        "If you are a US citizen born outside the United States, your birth was not recorded by any US state. Instead, you need a Consular Report of Birth Abroad (FS-240 or DS-1350) from the US Department of State.",
+      critical: true,
+      tips: [
+        "If your birth was registered with a US embassy or consulate, request a replacement FS-240 from the US Department of State.",
+        "Apply online at travel.state.gov or call 1-888-407-4747.",
+        "Fee: $50 for a replacement Consular Report of Birth Abroad.",
+        "If your birth was never registered with a US consulate, you may need to apply for a Certificate of Citizenship (Form N-600) through USCIS.",
+        "If one or both parents were US citizens at the time of your birth, you may still qualify for a CRBA — contact the nearest US embassy.",
+      ],
+    });
+  }
 
   if (answers.circumstances.includes("born-before-records")) {
     steps.push({
@@ -131,6 +149,21 @@ export function generatePlan(
     });
   }
 
+  if (answers.circumstances.includes("transgender")) {
+    steps.push({
+      order: order++,
+      title: "Updating the Gender Marker on Your Birth Certificate",
+      description:
+        "The process to amend the gender marker on a birth certificate varies significantly by state. Some states allow it with a simple form, others require a court order, and a few do not allow changes.",
+      tips: [
+        `Contact ${stateData.office.name} at ${stateData.office.phone} for ${stateData.stateName}'s specific requirements.`,
+        "The National Center for Transgender Equality (transequality.org/documents) maintains a state-by-state guide to updating identity documents.",
+        "Lambda Legal (lambdalegal.org) can provide legal assistance if you encounter difficulties.",
+        "Note: you may want to get your current birth certificate first, then apply for the amendment as a separate step.",
+      ],
+    });
+  }
+
   if (answers.circumstances.includes("adopted")) {
     steps.push({
       order: order++,
@@ -155,6 +188,22 @@ export function generatePlan(
         "Spread the Vote (spreadthevote.org) helps people without ID in 20 states.",
         "VoteRiders (voteriders.org) provides free assistance with ID and birth certificates for voting purposes.",
         "Ask about the SchoolhouseConnection 'I Am Here' legal hotline for youth.",
+      ],
+    });
+  }
+
+  if (answers.circumstances.includes("incarcerated")) {
+    steps.push({
+      order: order++,
+      title: "Requesting a Birth Certificate While Incarcerated",
+      description:
+        "You can request your birth certificate from a correctional facility, though the process may take longer. Many facilities have social workers or reentry coordinators who can help.",
+      tips: [
+        "Ask your facility's social worker, case manager, or reentry coordinator for help with the application.",
+        "Some states allow the facility to submit the request on your behalf.",
+        "Legal aid organizations that serve incarcerated people can often assist — ask your facility's law library for contacts.",
+        `Contact ${stateData.office.name} at ${stateData.office.phone} to ask about their process for incarcerated applicants.`,
+        "Many reentry programs include birth certificate assistance — ask about available programs before release.",
       ],
     });
   }
@@ -207,7 +256,8 @@ export function generatePlan(
 
   if (stateData.requestMethods.inPerson) {
     const inPerson = stateData.requestMethods.inPerson;
-    // Use the local county office if available, otherwise the state office
+    // Only show contact details when we have a specific local office.
+    // The state office address is often a PO Box and not useful for walk-ins.
     const inPersonContact = countyOffice
       ? {
           name: countyOffice.name,
@@ -216,24 +266,21 @@ export function generatePlan(
           hours: countyOffice.hours,
           website: countyOffice.website,
         }
-      : {
-          name: stateData.office.name,
-          address: stateData.office.address,
-          phone: stateData.office.phone,
-          hours: stateData.office.hours,
-          website: stateData.office.website,
-        };
+      : undefined;
     const inPersonFee = inPerson.fee ?? stateData.fees.certified;
     methodOptions.push({
       method: "inPerson",
       label: "In Person",
       tag: answers.hasGovernmentId ? "Fastest" : "Recommended",
-      cost: `$${inPersonFee}`,
+      cost: formatFee(inPersonFee),
       time: inPerson.processingTime,
       description: answers.hasGovernmentId
         ? `Bring your completed application, ID, and payment.`
         : `Going in person lets you talk to staff about alternative ID options.`,
       contact: inPersonContact,
+      link: inPerson.localOfficesUrl
+        ? { url: inPerson.localOfficesUrl, label: "Find a local office near you" }
+        : undefined,
       tips: [
         ...(inPerson.notes ? [inPerson.notes] : []),
         ...(!answers.hasGovernmentId
@@ -252,8 +299,8 @@ export function generatePlan(
     const online = stateData.requestMethods.online;
     const onlineFee = online.fee ?? stateData.fees.certified;
     const totalCost = online.additionalFee
-      ? `$${onlineFee} + $${online.additionalFee} service fee`
-      : `$${onlineFee}`;
+      ? `${formatFee(onlineFee)} + ${formatFee(online.additionalFee)} service fee`
+      : formatFee(onlineFee);
     methodOptions.push({
       method: "online",
       label: "Online",
@@ -267,7 +314,7 @@ export function generatePlan(
       tips: [
         ...(online.notes ? [online.notes] : []),
         ...(online.additionalFee
-          ? [`VitalChek charges a $${online.additionalFee} service fee on top of the state fee.`]
+          ? [`VitalChek charges a ${formatFee(online.additionalFee)} service fee on top of the state fee.`]
           : []),
         ...(online.vendorListUrl
           ? [`See all authorized vendors at ${online.vendorListUrl}`]
@@ -283,7 +330,7 @@ export function generatePlan(
       method: "mail",
       label: "By Mail",
       tag: "Cheapest",
-      cost: `$${mailFee}`,
+      cost: formatFee(mailFee),
       time: mail.processingTime,
       description: answers.hasGovernmentId
         ? `Mail your completed application, a photocopy of your ID, and payment.`
