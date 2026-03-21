@@ -13,6 +13,7 @@ import { formatFee } from "@/lib/format";
 export default function QuickPage() {
   const [stateCode, setStateCode] = useState("");
   const [zipCode, setZipCode] = useState("");
+  const [showBornAbroad, setShowBornAbroad] = useState(false);
 
   const stateData = stateCode ? getStateData(stateCode) : undefined;
   const showZip = stateCode && hasCountyData(stateCode);
@@ -74,6 +75,12 @@ export default function QuickPage() {
                   ))}
                 </optgroup>
               </select>
+              <button
+                onClick={() => setShowBornAbroad(true)}
+                className="mt-2 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
+              >
+                I was born outside the United States
+              </button>
             </div>
             {showZip && (
               <div className="sm:w-48">
@@ -100,6 +107,65 @@ export default function QuickPage() {
             )}
           </div>
         </div>
+
+        {/* Born abroad */}
+        {showBornAbroad && (
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm mb-8">
+            <h2 className="text-xl font-bold mb-2">
+              Born Outside the United States
+            </h2>
+            <p className="text-slate-500 mb-4">
+              If you are a US citizen born abroad, your birth was not recorded by a
+              US state. You need a different document.
+            </p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-4">
+              <h3 className="font-semibold text-blue-800 mb-3">
+                You Need a Consular Report of Birth Abroad (CRBA)
+              </h3>
+              <p className="text-sm text-blue-700 mb-4">
+                If your birth was registered with a US embassy or consulate, you can
+                request a replacement FS-240 or DS-1350 from the US Department of State.
+              </p>
+              <ul className="text-sm text-blue-700 space-y-2 list-disc list-outside ml-4">
+                <li>
+                  Apply online at{" "}
+                  <a
+                    href="https://travel.state.gov/content/travel/en/records-and-authentications/requesting-a-vital-record/replace-amend-CRBA.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-blue-900"
+                  >
+                    travel.state.gov
+                  </a>{" "}
+                  or call 1-888-407-4747
+                </li>
+                <li>Fee: $50 for a replacement Consular Report of Birth Abroad</li>
+                <li>
+                  If your birth was never registered with a US consulate, you may need
+                  to apply for a Certificate of Citizenship (Form N-600) through USCIS
+                </li>
+                <li>
+                  If one or both parents were US citizens at the time of your birth,
+                  you may still qualify — contact the nearest US embassy
+                </li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-lg p-4 mb-4">
+              <p className="text-sm text-slate-600">
+                <span className="font-medium">Not sure?</span> If you were born in a US state or territory
+                (including Puerto Rico, Guam, US Virgin Islands, American Samoa, or
+                Northern Mariana Islands), your birth certificate comes from that
+                jurisdiction, not the State Department.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowBornAbroad(false)}
+              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+            >
+              &larr; Back to state selection
+            </button>
+          </div>
+        )}
 
         {/* State not supported */}
         {stateCode && !stateData && (
