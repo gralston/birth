@@ -122,7 +122,8 @@ export default function Home() {
         </p>
         <p>
           We do not collect, store, or sell your personal information. All
-          processing happens in your browser.
+          processing happens in your browser. We use anonymous, cookie-free
+          analytics to count page views.
         </p>
       </footer>
     </main>
