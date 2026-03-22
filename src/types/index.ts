@@ -174,6 +174,8 @@ export interface RequestMethodOption {
   time: string;
   description: string;
   link?: { url: string; label: string };
+  /** Secondary link (e.g., vendor list) */
+  secondaryLink?: { url: string; label: string };
   tips?: string[];
   /** Full contact details for this method */
   contact?: {

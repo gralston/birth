@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { IntakeAnswers, Circumstance } from "@/types";
 import { US_STATES, US_TERRITORIES } from "@/data/usStates";
 import { getStateData, getAvailableStates } from "@/data/states";
@@ -17,43 +18,30 @@ const BASE_STEPS = [
 
 type StepName = (typeof BASE_STEPS)[number];
 
-const REASONS = [
-  { value: "voter-id", label: "Get a voter ID" },
-  { value: "passport", label: "Apply for a passport" },
-  { value: "real-id", label: "Get a REAL ID" },
-  { value: "employment", label: "Employment verification" },
-  { value: "benefits", label: "Apply for benefits" },
-  { value: "personal", label: "Personal records" },
-  { value: "other", label: "Other" },
+const REASON_KEYS = [
+  { value: "voter-id", key: "reasonVoterId" },
+  { value: "passport", key: "reasonPassport" },
+  { value: "real-id", key: "reasonRealId" },
+  { value: "employment", key: "reasonEmployment" },
+  { value: "benefits", key: "reasonBenefits" },
+  { value: "personal", key: "reasonPersonal" },
+  { value: "other", key: "reasonOther" },
 ] as const;
 
-const CIRCUMSTANCES = [
-  { value: "none" as Circumstance, label: "None of these apply" },
-  {
-    value: "no-id" as Circumstance,
-    label: "I have no government-issued ID at all",
-  },
-  {
-    value: "homeless" as Circumstance,
-    label: "I am experiencing homelessness",
-  },
-  { value: "name-change" as Circumstance, label: "My name has changed" },
-  { value: "adopted" as Circumstance, label: "I was adopted" },
-  {
-    value: "incarcerated" as Circumstance,
-    label: "I am or was recently incarcerated",
-  },
-  {
-    value: "born-before-records" as Circumstance,
-    label: "I was born before modern record-keeping",
-  },
-  {
-    value: "transgender" as Circumstance,
-    label: "I need to update the gender marker",
-  },
+const CIRCUMSTANCE_KEYS = [
+  { value: "none" as Circumstance, key: "circNone" },
+  { value: "no-id" as Circumstance, key: "circNoId" },
+  { value: "homeless" as Circumstance, key: "circHomeless" },
+  { value: "name-change" as Circumstance, key: "circNameChange" },
+  { value: "adopted" as Circumstance, key: "circAdopted" },
+  { value: "incarcerated" as Circumstance, key: "circIncarcerated" },
+  { value: "born-before-records" as Circumstance, key: "circBornBefore" },
+  { value: "transgender" as Circumstance, key: "circTransgender" },
 ] as const;
 
 export default function IntakeWizard() {
+  const t = useTranslations("Wizard");
+  const tb = useTranslations("BornAbroad");
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [showBornAbroad, setShowBornAbroad] = useState(false);
@@ -134,57 +122,45 @@ export default function IntakeWizard() {
       <div className="max-w-lg mx-auto">
         <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 shadow-sm">
           <h2 className="text-xl sm:text-2xl font-bold mb-2">
-            Born Outside the United States
+            {tb("title")}
           </h2>
-          <p className="text-slate-500 mb-6">
-            If you are a US citizen born abroad, your birth was not recorded by a
-            US state. You need a different document.
-          </p>
+          <p className="text-slate-500 mb-6">{tb("subtitle")}</p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-6">
             <h3 className="font-semibold text-blue-800 mb-3">
-              You Need a Consular Report of Birth Abroad (CRBA)
+              {tb("crbaTitle")}
             </h3>
-            <p className="text-sm text-blue-700 mb-4">
-              If your birth was registered with a US embassy or consulate, you can
-              request a replacement FS-240 or DS-1350 from the US Department of State.
-            </p>
+            <p className="text-sm text-blue-700 mb-4">{tb("crbaDesc")}</p>
             <ul className="text-sm text-blue-700 space-y-2 list-disc list-outside ml-4 mb-4">
               <li>
-                Apply online at{" "}
-                <a
-                  href="https://travel.state.gov/content/travel/en/records-and-authentications/requesting-a-vital-record/replace-amend-CRBA.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-blue-900"
-                >
-                  travel.state.gov
-                </a>{" "}
-                or call 1-888-407-4747
+                {tb.rich("applyOnline", {
+                  link: () => (
+                    <a
+                      href="https://travel.state.gov/content/travel/en/records-and-authentications/requesting-a-vital-record/replace-amend-CRBA.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-blue-900"
+                    >
+                      {tb("travelStateGov")}
+                    </a>
+                  ),
+                })}
               </li>
-              <li>Fee: $50 for a replacement Consular Report of Birth Abroad</li>
-              <li>
-                If your birth was never registered with a US consulate, you may need
-                to apply for a Certificate of Citizenship (Form N-600) through USCIS
-              </li>
-              <li>
-                If one or both parents were US citizens at the time of your birth,
-                you may still qualify — contact the nearest US embassy
-              </li>
+              <li>{tb("fee")}</li>
+              <li>{tb("neverRegistered")}</li>
+              <li>{tb("parentsCitizens")}</li>
             </ul>
           </div>
           <div className="bg-slate-50 rounded-lg p-4 mb-6">
-            <p className="text-sm font-semibold text-slate-700 mb-2">Not sure?</p>
-            <p className="text-sm text-slate-600">
-              If you were born in a US state or territory (including Puerto Rico,
-              Guam, US Virgin Islands, American Samoa, or Northern Mariana Islands),
-              your birth certificate comes from that jurisdiction, not the State Department.
+            <p className="text-sm font-semibold text-slate-700 mb-2">
+              {tb("notSureTitle")}
             </p>
+            <p className="text-sm text-slate-600">{tb("notSureDesc")}</p>
           </div>
           <button
             onClick={() => setShowBornAbroad(false)}
             className="text-blue-600 hover:text-blue-800 font-medium text-sm py-2"
           >
-            &larr; Back to state selection
+            &larr; {tb("backToState")}
           </button>
         </div>
       </div>
@@ -197,23 +173,23 @@ export default function IntakeWizard() {
       <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 shadow-sm">
         {stepName === "birthState" && (
           <StepContainer
-            title="Where were you born?"
-            subtitle="Select the US state or territory where you were born."
+            title={t("birthStateTitle")}
+            subtitle={t("birthStateSubtitle")}
           >
             <select
               value={answers.birthState || ""}
               onChange={(e) => update("birthState", e.target.value)}
               className="w-full p-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="">Select a state or US territory...</option>
-              <optgroup label="States">
+              <option value="">{t("selectPlaceholder")}</option>
+              <optgroup label={t("statesGroup")}>
                 {US_STATES.map((s) => (
                   <option key={s.code} value={s.code}>
                     {s.name}
                   </option>
                 ))}
               </optgroup>
-              <optgroup label="US Territories">
+              <optgroup label={t("territoriesGroup")}>
                 {US_TERRITORIES.map((s) => (
                   <option key={s.code} value={s.code}>
                     {s.name}
@@ -225,25 +201,27 @@ export default function IntakeWizard() {
               onClick={() => setShowBornAbroad(true)}
               className="mt-3 py-2 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
             >
-              I was born outside the United States
+              {t("bornAbroad")}
             </button>
             {answers.birthState && !getStateData(answers.birthState) && (
               <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
                 <p className="font-semibold text-amber-800 mb-2">
-                  We don&apos;t have a detailed guide for{" "}
-                  {[...US_STATES, ...US_TERRITORIES].find((s) => s.code === answers.birthState)?.name ||
-                    answers.birthState}{" "}
-                  yet.
+                  {t("unsupportedTitle", {
+                    state:
+                      [...US_STATES, ...US_TERRITORIES].find(
+                        (s) => s.code === answers.birthState
+                      )?.name || answers.birthState,
+                  })}
                 </p>
                 <p className="text-amber-700 text-sm mb-3">
-                  We currently support:{" "}
-                  {getAvailableStates()
-                    .map((s) => s.name)
-                    .join(", ")}
-                  . More states coming soon.
+                  {t("unsupportedList", {
+                    list: getAvailableStates()
+                      .map((s) => s.name)
+                      .join(", "),
+                  })}
                 </p>
                 <p className="text-amber-700 text-sm font-medium mb-2">
-                  In the meantime, these resources can help:
+                  {t("unsupportedHelp")}
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li>
@@ -253,9 +231,9 @@ export default function IntakeWizard() {
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-800 underline"
                     >
-                      CDC &quot;Where to Write&quot; Directory
+                      {t("unsupportedCdc")}
                     </a>{" "}
-                    — find your state&apos;s vital records office
+                    {t("unsupportedCdcDesc")}
                   </li>
                   <li>
                     <a
@@ -264,9 +242,9 @@ export default function IntakeWizard() {
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-800 underline"
                     >
-                      VitalChek
+                      {t("unsupportedVitalchek")}
                     </a>{" "}
-                    — order online (service fees apply)
+                    {t("unsupportedVitalchekDesc")}
                   </li>
                   <li>
                     <a
@@ -275,7 +253,7 @@ export default function IntakeWizard() {
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-800 underline"
                     >
-                      USAGov Birth Certificate Guide
+                      {t("unsupportedUsagov")}
                     </a>
                   </li>
                 </ul>
@@ -286,8 +264,13 @@ export default function IntakeWizard() {
 
         {stepName === "zipCode" && (
           <StepContainer
-            title="What's your zip code?"
-            subtitle={`${[...US_STATES, ...US_TERRITORIES].find((s) => s.code === answers.birthState)?.name || "Your state"} has local offices that can issue birth certificates — often same-day. We'll find the one nearest you.`}
+            title={t("zipTitle")}
+            subtitle={t("zipSubtitle", {
+              state:
+                [...US_STATES, ...US_TERRITORIES].find(
+                  (s) => s.code === answers.birthState
+                )?.name || "",
+            })}
           >
             <input
               type="text"
@@ -299,38 +282,45 @@ export default function IntakeWizard() {
                 const val = e.target.value.replace(/\D/g, "").slice(0, 5);
                 update("zipCode", val);
               }}
-              placeholder="e.g. 90210"
+              placeholder={t("zipPlaceholder")}
               className="w-full p-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            {answers.zipCode && answers.zipCode.length === 5 && answers.birthState && (
-              <div className="mt-3 text-sm text-slate-500">
-                {getCountyFromZip(answers.zipCode, answers.birthState)
-                  ? `We'll show you the ${getCountyFromZip(answers.zipCode, answers.birthState)} County office on your results page.`
-                  : "We'll show you all available local offices on your results page."}
-              </div>
-            )}
+            {answers.zipCode &&
+              answers.zipCode.length === 5 &&
+              answers.birthState && (
+                <div className="mt-3 text-sm text-slate-500">
+                  {getCountyFromZip(answers.zipCode, answers.birthState)
+                    ? t("zipCountyFound", {
+                        county:
+                          getCountyFromZip(
+                            answers.zipCode,
+                            answers.birthState
+                          ) ?? "",
+                      })
+                    : t("zipCountyNotFound")}
+                </div>
+              )}
             <button
               onClick={next}
               className="mt-4 py-2 text-sm text-slate-400 hover:text-slate-600 underline"
             >
-              Skip — just show me the state office
+              {t("skipZip")}
             </button>
           </StepContainer>
         )}
 
-
         {stepName === "reason" && (
           <StepContainer
-            title="Why do you need a birth certificate?"
-            subtitle="This helps us tailor your action plan."
+            title={t("reasonTitle")}
+            subtitle={t("reasonSubtitle")}
           >
             <div className="space-y-3">
-              {REASONS.map((r) => (
+              {REASON_KEYS.map((r) => (
                 <RadioOption
                   key={r.value}
                   selected={answers.reason === r.value}
                   onClick={() => update("reason", r.value)}
-                  label={r.label}
+                  label={t(r.key)}
                 />
               ))}
             </div>
@@ -339,16 +329,16 @@ export default function IntakeWizard() {
 
         {stepName === "circumstances" && (
           <StepContainer
-            title="Do any of these apply to you?"
-            subtitle="Select all that apply. This helps us find fee waivers and special resources."
+            title={t("circumstancesTitle")}
+            subtitle={t("circumstancesSubtitle")}
           >
             <div className="space-y-3">
-              {CIRCUMSTANCES.map((c) => (
+              {CIRCUMSTANCE_KEYS.map((c) => (
                 <CheckboxOption
                   key={c.value}
                   checked={answers.circumstances?.includes(c.value) || false}
                   onChange={() => toggleCircumstance(c.value)}
-                  label={c.label}
+                  label={t(c.key)}
                 />
               ))}
             </div>
@@ -362,14 +352,14 @@ export default function IntakeWizard() {
             disabled={currentStep === 0}
             className="px-6 py-3 text-slate-600 hover:text-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
-            Back
+            {t("back")}
           </button>
           <button
             onClick={next}
             disabled={!canAdvance()}
             className="px-8 py-3 bg-blue-800 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
-            {currentStep === steps.length - 1 ? "Get My Plan" : "Next"}
+            {currentStep === steps.length - 1 ? t("getPlan") : t("next")}
           </button>
         </div>
       </div>
@@ -448,9 +438,7 @@ function CheckboxOption({
       <div className="flex items-center gap-3">
         <div
           className={`w-5 h-5 rounded border flex items-center justify-center ${
-            checked
-              ? "bg-blue-600 border-blue-600"
-              : "border-slate-300"
+            checked ? "bg-blue-600 border-blue-600" : "border-slate-300"
           }`}
         >
           {checked && (

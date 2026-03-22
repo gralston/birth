@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { US_STATES, US_TERRITORIES } from "@/data/usStates";
 import { getStateData } from "@/data/states";
 import { hasCountyData, findCountyOffice } from "@/data/countyOffices";
@@ -9,13 +10,21 @@ import { getCountyFromZip } from "@/lib/zipToCounty";
 import { CountyOffice, StateVitalRecords } from "@/types";
 import { getFeedbackUrl } from "@/lib/feedback";
 import { formatFee } from "@/lib/format";
+import { localizeStateData } from "@/lib/localizeStateData";
 
 export default function QuickPage() {
+  const t = useTranslations("Quick");
+  const tb = useTranslations("BornAbroad");
+  const tc = useTranslations("Common");
+  const tr = useTranslations("Results");
+
+  const locale = useLocale();
   const [stateCode, setStateCode] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [showBornAbroad, setShowBornAbroad] = useState(false);
 
-  const stateData = stateCode ? getStateData(stateCode) : undefined;
+  const rawStateData = stateCode ? getStateData(stateCode) : undefined;
+  const stateData = rawStateData ? localizeStateData(rawStateData, locale) : undefined;
   const showZip = stateCode && hasCountyData(stateCode);
 
   let countyOffice: CountyOffice | undefined;
@@ -33,11 +42,9 @@ export default function QuickPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold mb-2">
-            Order Your Birth Certificate
+            {t("title")}
           </h1>
-          <p className="text-slate-500">
-            Pick your state and we&apos;ll show you all the ways to order.
-          </p>
+          <p className="text-slate-500">{t("subtitle")}</p>
         </div>
 
         {/* State + Zip selector */}
@@ -48,7 +55,7 @@ export default function QuickPage() {
                 htmlFor="state"
                 className="block text-sm font-medium text-slate-700 mb-1"
               >
-                State or US territory where you were born
+                {t("stateLabel")}
               </label>
               <select
                 id="state"
@@ -59,15 +66,15 @@ export default function QuickPage() {
                 }}
                 className="w-full p-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">Select a state or US territory...</option>
-                <optgroup label="States">
+                <option value="">{t("statePlaceholder")}</option>
+                <optgroup label={t("statesGroup")}>
                   {US_STATES.map((s) => (
                     <option key={s.code} value={s.code}>
                       {s.name}
                     </option>
                   ))}
                 </optgroup>
-                <optgroup label="US Territories">
+                <optgroup label={t("territoriesGroup")}>
                   {US_TERRITORIES.map((s) => (
                     <option key={s.code} value={s.code}>
                       {s.name}
@@ -79,7 +86,7 @@ export default function QuickPage() {
                 onClick={() => setShowBornAbroad(true)}
                 className="mt-2 py-2 text-sm text-slate-500 hover:text-blue-700 underline transition-colors"
               >
-                I was born outside the United States
+                {t("bornAbroad")}
               </button>
             </div>
             {showZip && (
@@ -88,7 +95,8 @@ export default function QuickPage() {
                   htmlFor="zip"
                   className="block text-sm font-medium text-slate-700 mb-1"
                 >
-                  Your zip code <span className="text-slate-400">(optional)</span>
+                  {t("zipLabel")}{" "}
+                  <span className="text-slate-400">{t("zipOptional")}</span>
                 </label>
                 <input
                   id="zip"
@@ -100,7 +108,7 @@ export default function QuickPage() {
                   onChange={(e) =>
                     setZipCode(e.target.value.replace(/\D/g, "").slice(0, 5))
                   }
-                  placeholder="e.g. 90210"
+                  placeholder={t("zipPlaceholder")}
                   className="w-full p-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -111,58 +119,44 @@ export default function QuickPage() {
         {/* Born abroad */}
         {showBornAbroad && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm mb-8">
-            <h2 className="text-xl font-bold mb-2">
-              Born Outside the United States
-            </h2>
-            <p className="text-slate-500 mb-4">
-              If you are a US citizen born abroad, your birth was not recorded by a
-              US state. You need a different document.
-            </p>
+            <h2 className="text-xl font-bold mb-2">{tb("title")}</h2>
+            <p className="text-slate-500 mb-4">{tb("subtitle")}</p>
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-4">
               <h3 className="font-semibold text-blue-800 mb-3">
-                You Need a Consular Report of Birth Abroad (CRBA)
+                {tb("crbaTitle")}
               </h3>
-              <p className="text-sm text-blue-700 mb-4">
-                If your birth was registered with a US embassy or consulate, you can
-                request a replacement FS-240 or DS-1350 from the US Department of State.
-              </p>
+              <p className="text-sm text-blue-700 mb-4">{tb("crbaDesc")}</p>
               <ul className="text-sm text-blue-700 space-y-2 list-disc list-outside ml-4">
                 <li>
-                  Apply online at{" "}
-                  <a
-                    href="https://travel.state.gov/content/travel/en/records-and-authentications/requesting-a-vital-record/replace-amend-CRBA.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:text-blue-900"
-                  >
-                    travel.state.gov
-                  </a>{" "}
-                  or call 1-888-407-4747
+                  {tb.rich("applyOnline", {
+                    link: () => (
+                      <a
+                        href="https://travel.state.gov/content/travel/en/records-and-authentications/requesting-a-vital-record/replace-amend-CRBA.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-blue-900"
+                      >
+                        {tb("travelStateGov")}
+                      </a>
+                    ),
+                  })}
                 </li>
-                <li>Fee: $50 for a replacement Consular Report of Birth Abroad</li>
-                <li>
-                  If your birth was never registered with a US consulate, you may need
-                  to apply for a Certificate of Citizenship (Form N-600) through USCIS
-                </li>
-                <li>
-                  If one or both parents were US citizens at the time of your birth,
-                  you may still qualify — contact the nearest US embassy
-                </li>
+                <li>{tb("fee")}</li>
+                <li>{tb("neverRegistered")}</li>
+                <li>{tb("parentsCitizens")}</li>
               </ul>
             </div>
             <div className="bg-slate-50 rounded-lg p-4 mb-4">
               <p className="text-sm text-slate-600">
-                <span className="font-medium">Not sure?</span> If you were born in a US state or territory
-                (including Puerto Rico, Guam, US Virgin Islands, American Samoa, or
-                Northern Mariana Islands), your birth certificate comes from that
-                jurisdiction, not the State Department.
+                <span className="font-medium">{tb("notSureTitle")}</span>{" "}
+                {tb("notSureDesc")}
               </p>
             </div>
             <button
               onClick={() => setShowBornAbroad(false)}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm py-2"
             >
-              &larr; Back to state selection
+              &larr; {tb("backToState")}
             </button>
           </div>
         )}
@@ -171,41 +165,53 @@ export default function QuickPage() {
         {stateCode && !stateData && (
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-8">
             <p className="font-semibold text-amber-800 mb-3">
-              We don&apos;t have a detailed guide for{" "}
-              {[...US_STATES, ...US_TERRITORIES].find((s) => s.code === stateCode)?.name || stateCode}{" "}
-              yet, but you can order through these resources:
+              {t("noGuide", {
+                state:
+                  [...US_STATES, ...US_TERRITORIES].find(
+                    (s) => s.code === stateCode
+                  )?.name || stateCode,
+              })}
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <ResourceCard
                 href="https://www.vitalchek.com/v/birth-certificates"
-                title="VitalChek"
-                desc="Order online — works for most states. Service fee applies."
-                tag="Fastest"
+                title={t("vitalchekTitle")}
+                desc={t("vitalchekDesc")}
+                tag={t("fastest")}
               />
               <ResourceCard
                 href="https://www.cdc.gov/nchs/w2w/index.htm"
-                title="CDC Directory"
-                desc="Find your state's vital records office to order directly."
-                tag="Cheapest"
+                title={t("cdcTitle")}
+                desc={t("cdcDesc")}
+                tag={t("cheapest")}
               />
             </div>
           </div>
         )}
 
         {/* Results */}
-        {stateData && <QuickResults stateData={stateData} countyOffice={countyOffice} countyName={countyName} />}
+        {stateData && (
+          <QuickResults
+            stateData={stateData}
+            countyOffice={countyOffice}
+            countyName={countyName}
+            t={t}
+            tCommon={tc}
+            tResults={tr}
+            locale={locale}
+          />
+        )}
 
         {/* Link to guided path */}
         <div className="text-center mt-8 space-y-3">
           <p className="text-slate-500 text-sm">
-            Don&apos;t have a photo ID? Need help with fees or complicated
-            situations?
+            {t("noPhotoIdPrompt")}
           </p>
           <Link
             href="/intake"
             className="inline-block text-blue-600 hover:text-blue-800 font-medium"
           >
-            Use our guided step-by-step tool instead &rarr;
+            {t("useGuidedTool")} &rarr;
           </Link>
         </div>
       </div>
@@ -217,11 +223,20 @@ function QuickResults({
   stateData,
   countyOffice,
   countyName,
+  t,
+  tCommon,
+  tResults,
+  locale,
 }: {
   stateData: StateVitalRecords;
   countyOffice?: CountyOffice;
   countyName?: string;
+  t: ReturnType<typeof useTranslations>;
+  tCommon: ReturnType<typeof useTranslations>;
+  tResults: ReturnType<typeof useTranslations>;
+  locale: string;
 }) {
+  const dateLocale = locale === "es" ? "es-US" : "en-US";
   return (
     <div>
       {/* Local office card */}
@@ -229,14 +244,28 @@ function QuickResults({
         <div className="bg-green-50 border border-green-200 rounded-xl p-5 mb-6">
           <div className="flex items-start gap-3">
             <div className="w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
               </svg>
             </div>
             <div>
               <p className="font-semibold text-green-800">
-                Your nearest office: {countyOffice.name}
+                {t("nearestOffice", { name: countyOffice.name })}
               </p>
               <div className="text-sm text-green-700 space-y-0.5">
                 <p>
@@ -250,7 +279,10 @@ function QuickResults({
                   </a>
                 </p>
                 <p>
-                  <a href={`tel:${countyOffice.phone.replace(/[^\d+]/g, "")}`} className="underline">
+                  <a
+                    href={`tel:${countyOffice.phone.replace(/[^\d+]/g, "")}`}
+                    className="underline"
+                  >
                     {countyOffice.phone}
                   </a>
                   {countyOffice.hours && ` · ${countyOffice.hours}`}
@@ -265,22 +297,32 @@ function QuickResults({
       {stateData.feeWaivers.length > 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6">
           <p className="font-semibold text-amber-800 mb-2">
-            {stateData.feeWaivers.length === 1 ? "Fee Waiver Information" : "Fee Waivers Available"}
+            {stateData.feeWaivers.length === 1
+              ? t("feeWaiverInfo")
+              : t("feeWaiversAvailable")}
           </p>
           {stateData.feeWaivers.length === 1 ? (
             <p className="text-sm text-amber-700">
-              <span className="font-medium">{stateData.feeWaivers[0].eligibility}:</span>{" "}
+              <span className="font-medium">
+                {stateData.feeWaivers[0].eligibility}:
+              </span>{" "}
               {stateData.feeWaivers[0].howToClaim}
               {stateData.feeWaivers[0].citation && (
-                <span className="text-amber-600"> ({stateData.feeWaivers[0].citation})</span>
+                <span className="text-amber-600">
+                  {" "}
+                  ({stateData.feeWaivers[0].citation})
+                </span>
               )}
             </p>
           ) : (
             <ul className="text-sm text-amber-700 space-y-1.5 list-disc list-outside ml-4">
               {stateData.feeWaivers.map((w, i) => (
                 <li key={i}>
-                  <span className="font-medium">{w.eligibility}:</span> {w.howToClaim}
-                  {w.citation && <span className="text-amber-600"> ({w.citation})</span>}
+                  <span className="font-medium">{w.eligibility}:</span>{" "}
+                  {w.howToClaim}
+                  {w.citation && (
+                    <span className="text-amber-600"> ({w.citation})</span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -290,28 +332,34 @@ function QuickResults({
 
       {/* Method comparison cards */}
       <h2 className="font-bold text-lg mb-4">
-        How to Get Your {stateData.stateName} Birth Certificate
+        {t("howToGet", { state: stateData.stateName })}
       </h2>
 
       <div className="grid gap-4 sm:grid-cols-3 mb-6">
         {/* In Person */}
         {stateData.requestMethods.inPerson && (
           <MethodCard
-            title="In Person"
-            tag="Fastest"
+            title={t("inPerson")}
+            tag={t("fastest")}
             tagColor="green"
-            cost={formatFee(stateData.requestMethods.inPerson.fee ?? stateData.fees.certified)}
+            cost={formatFee(
+              stateData.requestMethods.inPerson.fee ?? stateData.fees.certified
+            )}
             time={stateData.requestMethods.inPerson.processingTime}
             details={
               countyOffice
-                ? `Visit ${countyOffice.name}. Bring your ID, completed application, and payment.`
-                : `Visit ${stateData.requestMethods.inPerson.locations}. Bring your ID, completed application, and payment.`
+                ? t("visitOffice", { name: countyOffice.name })
+                : t("visitOffice", { name: stateData.requestMethods.inPerson.locations })
             }
+            note={stateData.requestMethods.inPerson.notes}
             cta={
               countyOffice?.website
-                ? { url: countyOffice.website, label: "Office website" }
+                ? { url: countyOffice.website, label: t("officeWebsite") }
                 : stateData.requestMethods.inPerson?.localOfficesUrl
-                  ? { url: stateData.requestMethods.inPerson.localOfficesUrl, label: "Find a local office" }
+                  ? {
+                      url: stateData.requestMethods.inPerson.localOfficesUrl,
+                      label: t("findLocalOffice"),
+                    }
                   : undefined
             }
           />
@@ -320,25 +368,29 @@ function QuickResults({
         {/* Online */}
         {stateData.requestMethods.online && (
           <MethodCard
-            title="Online"
-            tag="Most Convenient"
+            title={t("online")}
+            tag={t("mostConvenient")}
             tagColor="blue"
             cost={
               stateData.requestMethods.online.additionalFee
-                ? `${formatFee(stateData.requestMethods.online.fee ?? stateData.fees.certified)} + ${formatFee(stateData.requestMethods.online.additionalFee)} fee`
-                : formatFee(stateData.requestMethods.online.fee ?? stateData.fees.certified)
+                ? t("serviceFee", { base: formatFee(stateData.requestMethods.online.fee ?? stateData.fees.certified), extra: formatFee(stateData.requestMethods.online.additionalFee) })
+                : formatFee(
+                    stateData.requestMethods.online.fee ??
+                      stateData.fees.certified
+                  )
             }
-            time="5–10 business days"
+            time={t("onlineTime")}
             details={
               stateData.requestMethods.online.provider === "vitalchek"
-                ? `Order through VitalChek, an authorized online vendor.`
-                : `Order through ${stateData.stateName}'s online portal.`
+                ? t("orderVitalchek")
+                : t("orderStatePortal", { state: stateData.stateName })
             }
             note={stateData.requestMethods.online.notes}
             vendorListUrl={stateData.requestMethods.online.vendorListUrl}
+            vendorListLabel={t("seeFullList")}
             cta={{
               url: stateData.requestMethods.online.url,
-              label: "Order online",
+              label: t("orderOnline"),
             }}
           />
         )}
@@ -346,15 +398,21 @@ function QuickResults({
         {/* Mail */}
         {stateData.requestMethods.mail && (
           <MethodCard
-            title="By Mail"
-            tag="Cheapest"
+            title={t("byMail")}
+            tag={t("cheapest")}
             tagColor="amber"
-            cost={formatFee(stateData.requestMethods.mail.fee ?? stateData.fees.certified)}
+            cost={formatFee(
+              stateData.requestMethods.mail.fee ?? stateData.fees.certified
+            )}
             time={stateData.requestMethods.mail.processingTime}
-            details={`Mail your application, ID copy, and payment to: ${stateData.requestMethods.mail.address}`}
+            details={t("mailTo", { address: stateData.requestMethods.mail.address })}
+            note={stateData.requestMethods.mail.notes}
             cta={
               stateData.applicationFormUrl
-                ? { url: stateData.applicationFormUrl, label: "Download form (PDF)" }
+                ? {
+                    url: stateData.applicationFormUrl,
+                    label: t("downloadFormPdf"),
+                  }
                 : undefined
             }
           />
@@ -363,28 +421,33 @@ function QuickResults({
 
       {/* What you'll need */}
       <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6">
-        <h3 className="font-semibold mb-3">What You&apos;ll Need</h3>
+        <h3 className="font-semibold mb-3">{t("whatYouNeed")}</h3>
         <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-600">
           <div className="flex items-start gap-2">
             <span className="text-slate-400 mt-0.5">-</span>
-            <span>A government-issued photo ID (driver&apos;s license, passport, or military ID)</span>
+            <span>{t("needPhotoId")}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-slate-400 mt-0.5">-</span>
-            <span>Payment of {formatFee(stateData.fees.certified)} ({stateData.fees.paymentMethods.join(", ")})</span>
+            <span>
+              {t("needPayment", {
+                fee: formatFee(stateData.fees.certified),
+                methods: stateData.fees.paymentMethods.join(", "),
+              })}
+            </span>
           </div>
           {stateData.applicationFormUrl && (
             <div className="flex items-start gap-2">
               <span className="text-slate-400 mt-0.5">-</span>
               <span>
-                Completed{" "}
+                {t("needFormLabel")}{" "}
                 <a
                   href={stateData.applicationFormUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline"
                 >
-                  application form
+                  {t("applicationForm")}
                 </a>
                 {stateData.applicationFormUrlEs && (
                   <>
@@ -395,17 +458,17 @@ function QuickResults({
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-800 underline"
                     >
-                      en español
+                      {t("formEsLabel")}
                     </a>
                   </>
                 )}{" "}
-                (for mail/in-person)
+                {t("forMailInPerson")}
               </span>
             </div>
           )}
           <div className="flex items-start gap-2">
             <span className="text-slate-400 mt-0.5">-</span>
-            <span>Your full name at birth, date of birth, and place of birth</span>
+            <span>{t("needBirthInfo")}</span>
           </div>
         </div>
       </div>
@@ -429,7 +492,7 @@ function QuickResults({
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800"
             >
-              Website
+              {tCommon("website")}
             </a>
           </p>
         </div>
@@ -443,20 +506,28 @@ function QuickResults({
         )}
 
         <p className="text-xs sm:text-sm text-slate-500 pt-2 border-t border-slate-200">
-          Information may change — verify with your state&apos;s vital records
-          office before submitting. We are not affiliated with any government
-          agency.
-          {stateData.lastVerified && stateData.lastVerified !== "unverified" && (
-            <> Last verified: {new Date(stateData.lastVerified + "T00:00:00").toLocaleDateString("en-US", { month: "long", year: "numeric" })}.</>
-          )}
-          {" "}
+          {t("infoDisclaimer")}
+          {stateData.lastVerified &&
+            stateData.lastVerified !== "unverified" && (
+              <>
+                {" "}
+                {tResults("lastVerified", {
+                  date: new Date(
+                    stateData.lastVerified + "T00:00:00"
+                  ).toLocaleDateString(dateLocale, {
+                    month: "long",
+                    year: "numeric",
+                  }),
+                })}
+              </>
+            )}{" "}
           <a
             href={getFeedbackUrl(stateData.stateName)}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-700 underline"
           >
-            See an error? Let us know.
+            {tResults("seeError")}
           </a>
         </p>
       </div>
@@ -473,6 +544,7 @@ function MethodCard({
   details,
   note,
   vendorListUrl,
+  vendorListLabel,
   cta,
 }: {
   title: string;
@@ -483,6 +555,7 @@ function MethodCard({
   details: string;
   note?: string;
   vendorListUrl?: string;
+  vendorListLabel?: string;
   cta?: { url: string; label: string };
 }) {
   const tagStyles = {
@@ -507,7 +580,21 @@ function MethodCard({
         <span>{time}</span>
       </div>
       <p className="text-sm text-slate-600 mb-3">{details}</p>
-      {note && <p className="text-xs text-slate-500 mb-3">{note}{" "}{vendorListUrl && <a href={vendorListUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">See full list &rarr;</a>}</p>}
+      {note && (
+        <p className="text-xs text-slate-500 mb-3">
+          {note}{" "}
+          {vendorListUrl && (
+            <a
+              href={vendorListUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline"
+            >
+              {vendorListLabel} &rarr;
+            </a>
+          )}
+        </p>
+      )}
       <div className="flex-1" />
       {cta && (
         <a
