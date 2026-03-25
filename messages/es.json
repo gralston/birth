@@ -317,6 +317,11 @@
     "nextBenefitsNoId": "Ahora puede usar su acta de nacimiento para solicitar beneficios:\n\n1. Acta de nacimiento — ¡listo!\n2. Para beneficios del Seguro Social — lleve su acta de nacimiento a su oficina local de SSA\n3. Para Medicaid y otros programas — contacte a la agencia específica para confirmar qué documentos necesitan",
     "nextBenefitsWithId": "Ahora puede usar su acta de nacimiento para solicitar beneficios. Contacte a la agencia específica (Seguro Social, Medicaid, etc.) para confirmar qué documentos adicionales requieren.",
     "nextDefaultNoId": "Ahora tiene su acta de nacimiento — un documento fundamental. Desde aquí:\n\n1. Acta de nacimiento — ¡listo!\n2. Tarjeta de Seguro Social — visite ssa.gov o su oficina local de SSA (gratis)\n3. Identificación estatal — visite su DMV con su acta de nacimiento y tarjeta de Seguro Social\n4. Pasaporte — solicite en travel.state.gov con su acta de nacimiento e identificación con foto",
-    "nextDefaultWithId": "Guarde su copia certificada del acta de nacimiento en un lugar seguro. Puede usarse para muchos propósitos, incluyendo solicitudes de identificación, solicitudes de pasaporte, inscripción en beneficios y más."
+    "nextDefaultWithId": "Guarde su copia certificada del acta de nacimiento en un lugar seguro. Puede usarse para muchos propósitos, incluyendo solicitudes de identificación, solicitudes de pasaporte, inscripción en beneficios y más.",
+
+    "crossLinkMarriageCert": "¿También necesita su acta de matrimonio? Use nuestro Navegador de Actas de Matrimonio gratuito.",
+    "crossLinkMarriageCertNameChange": "Si su nombre cambió por matrimonio, necesitará su acta de matrimonio para vincular su nombre de nacimiento con su nombre actual.",
+    "crossLinkMarriageCertPassport": "Si su nombre cambió por matrimonio, también necesitará su acta de matrimonio para su solicitud de pasaporte.",
+    "crossLinkMarriageCertRealId": "Si su nombre cambió por matrimonio, también necesitará su acta de matrimonio para REAL ID."
   }
 }

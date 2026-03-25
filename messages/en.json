@@ -317,6 +317,11 @@
     "nextBenefitsNoId": "You can now use your birth certificate to apply for benefits:\n\n1. Birth certificate — done!\n2. For Social Security benefits — bring your birth certificate to your local SSA office\n3. For Medicaid and other programs — contact the specific agency to confirm what documents they need",
     "nextBenefitsWithId": "You can now use your birth certificate to apply for benefits. Contact the specific agency (Social Security, Medicaid, etc.) to confirm what additional documents they require.",
     "nextDefaultNoId": "You now have your birth certificate — a critical foundation document. From here:\n\n1. Birth certificate — done!\n2. Social Security card — visit ssa.gov or your local SSA office (free)\n3. State ID — visit your DMV with your birth certificate and Social Security card\n4. Passport — apply at travel.state.gov with your birth certificate and photo ID",
-    "nextDefaultWithId": "Keep your certified birth certificate in a safe place. It can be used for many purposes including ID applications, passport applications, benefits enrollment, and more."
+    "nextDefaultWithId": "Keep your certified birth certificate in a safe place. It can be used for many purposes including ID applications, passport applications, benefits enrollment, and more.",
+
+    "crossLinkMarriageCert": "Need your marriage certificate too? Use our free Marriage Certificate Navigator.",
+    "crossLinkMarriageCertNameChange": "If your name changed due to marriage, you'll need your marriage certificate to link your birth name to your current name.",
+    "crossLinkMarriageCertPassport": "If your name changed due to marriage, you'll also need your marriage certificate for your passport application.",
+    "crossLinkMarriageCertRealId": "If your name changed due to marriage, you'll also need your marriage certificate for REAL ID."
   }
 }

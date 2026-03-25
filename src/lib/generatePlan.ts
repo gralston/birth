@@ -1,5 +1,6 @@
 import { ActionStep, CountyOffice, IntakeAnswers, RequestMethodOption, StateVitalRecords } from "@/types";
 import { formatFee } from "@/lib/format";
+import { MARRIAGE_CERT_URL } from "@/lib/crossLinks";
 
 type T = (key: string, params?: Record<string, string | number>) => string;
 
@@ -153,7 +154,9 @@ export function generatePlan(
       tips: [
         t("nameChangeTip1"),
         t("nameChangeTip2"),
+        t("crossLinkMarriageCertNameChange"),
       ],
+      link: { url: MARRIAGE_CERT_URL, label: t("crossLinkMarriageCert") },
     });
   }
 
@@ -415,6 +418,17 @@ export function generatePlan(
 
   // --- AFTER YOU RECEIVE IT ---
 
+  const afterTips: string[] = [];
+  let afterLink: { url: string; label: string } | undefined;
+
+  if (answers.reason === "passport") {
+    afterTips.push(t("crossLinkMarriageCertPassport"));
+    afterLink = { url: MARRIAGE_CERT_URL, label: t("crossLinkMarriageCert") };
+  } else if (answers.reason === "real-id") {
+    afterTips.push(t("crossLinkMarriageCertRealId"));
+    afterLink = { url: MARRIAGE_CERT_URL, label: t("crossLinkMarriageCert") };
+  }
+
   steps.push({
     order: order++,
     title: needsSSCard ? t("getStateIdTitle") : t("afterReceiveTitle"),
@@ -423,7 +437,8 @@ export function generatePlan(
         "\n\n" +
         getNextStepsByReason(answers.reason, answers.hasGovernmentId, t)
       : getNextStepsByReason(answers.reason, answers.hasGovernmentId, t),
-    tips: undefined,
+    tips: afterTips.length > 0 ? afterTips : undefined,
+    link: afterLink,
   });
 
   return steps;
