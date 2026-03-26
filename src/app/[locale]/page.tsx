@@ -101,10 +101,41 @@ export default async function Home({
         </div>
       </section>
 
+      {/* Fee waivers callout */}
+      <section className="px-4 py-12">
+        <div className="max-w-xl mx-auto text-center">
+          <Link
+            href="/fee-waivers"
+            className="block bg-green-50 border border-green-200 rounded-xl p-6 hover:border-green-400 transition-colors"
+          >
+            <p className="font-bold text-lg text-green-800 mb-1">
+              {t("feeWaiverCta")}
+            </p>
+            <p className="text-sm text-green-700">
+              {t("feeWaiverCtaDesc")}
+            </p>
+          </Link>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-slate-200 px-4 py-8 text-center text-sm text-slate-500">
         <p className="mb-2">{t("footerDisclaimer")}</p>
-        <p>{t("footerPrivacy")}</p>
+        <p className="mb-4">{t("footerPrivacy")}</p>
+        <div className="flex justify-center gap-4 text-slate-400">
+          <Link href="/for-organizations" className="hover:text-slate-600">
+            {t("footerOrgs")}
+          </Link>
+          <span>&middot;</span>
+          <a
+            href="https://mymarriagecert.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-slate-600"
+          >
+            {t("footerSister")}
+          </a>
+        </div>
       </footer>
     </main>
   );

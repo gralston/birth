@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { trackLanguageSwitch } from "@/lib/analytics";
 
 export default function NavBar() {
   const t = useTranslations("Nav");
@@ -12,6 +13,7 @@ export default function NavBar() {
 
   function switchLanguage() {
     const target = locale === "en" ? "es" : "en";
+    trackLanguageSwitch(locale, target);
     router.replace(pathname, { locale: target });
   }
 
@@ -37,6 +39,12 @@ export default function NavBar() {
             className="text-slate-600 hover:text-blue-800 transition-colors px-3 py-2 rounded-lg active:bg-slate-100"
           >
             {t("guided")}
+          </Link>
+          <Link
+            href="/fee-waivers"
+            className="hidden sm:block text-slate-600 hover:text-blue-800 transition-colors px-3 py-2 rounded-lg active:bg-slate-100"
+          >
+            {t("feeWaivers")}
           </Link>
           <button
             onClick={switchLanguage}

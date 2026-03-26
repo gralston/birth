@@ -8,6 +8,7 @@ import { US_STATES, US_TERRITORIES } from "@/data/usStates";
 import { getStateData, getAvailableStates } from "@/data/states";
 import { hasCountyData } from "@/data/countyOffices";
 import { getCountyFromZip } from "@/lib/zipToCounty";
+import { trackWizardStep, trackWizardComplete } from "@/lib/analytics";
 
 const BASE_STEPS = [
   "birthState",
@@ -80,11 +81,14 @@ export default function IntakeWizard() {
 
   function next() {
     if (currentStep < steps.length - 1) {
+      const nextStep = steps[currentStep + 1];
+      trackWizardStep(nextStep, answers.birthState);
       setCurrentStep((s) => s + 1);
     } else {
       // Submit — encode answers as URL params
       // Derive hasId from circumstances: if they didn't check "no-id", they have ID
       const hasId = !answers.circumstances!.includes("no-id");
+      trackWizardComplete(answers.birthState!, answers.reason!, hasId);
       const params = new URLSearchParams({
         state: answers.birthState!,
         hasId: String(hasId),
