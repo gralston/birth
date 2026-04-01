@@ -1,0 +1,78 @@
+import { CountyOffice } from "@/types";
+
+/**
+ * All 64 Louisiana parish offices that issue birth certificates.
+ *
+ * Louisiana uses parishes instead of counties. Birth certificates are
+ * issued by the Louisiana Vital Records Registry in New Orleans.
+ * Parish health units (part of the Louisiana Department of Health)
+ * can also assist with obtaining birth certificates.
+ *
+ * Data gathered March 2026 from official parish and LA DHH websites.
+ */
+export const LA_COUNTIES: CountyOffice[] = [
+  { county: "Acadia", name: "Acadia Parish Health Unit", address: "1111 Crowley Rayne Highway, Crowley, LA 70526", phone: "(337) 788-7510", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Allen", name: "Allen Parish Health Unit", address: "102 Jeff Davis Lane, Oberlin, LA 70655", phone: "(337) 639-4446", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Ascension", name: "Ascension Parish Health Unit", address: "1024 Southeast Ascension Complex Boulevard, Gonzales, LA 70737", phone: "(225) 621-2099", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Assumption", name: "Assumption Parish Health Unit", address: "4680 Highway 1, Napoleonville, LA 70390", phone: "(985) 369-6816", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Avoyelles", name: "Avoyelles Parish Health Unit", address: "562 Government Street, Marksville, LA 71351", phone: "(318) 253-6244", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Beauregard", name: "Beauregard Parish Health Unit", address: "106 West 4th Street, DeRidder, LA 70634", phone: "(337) 462-5601", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Bienville", name: "Bienville Parish Health Unit", address: "1236 Aster Street, Arcadia, LA 71001", phone: "(318) 263-2123", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Bossier", name: "Bossier Parish Health Unit", address: "700 Benton Road, Suite A, Bossier City, LA 71111", phone: "(318) 741-7430", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Caddo", name: "Caddo Parish Health Unit – Vital Records", address: "1035 Creswell Avenue, Shreveport, LA 71101", phone: "(318) 676-5222", website: "https://www.caddo.org/", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Calcasieu", name: "Calcasieu Parish Health Unit", address: "3236 Kirkman Street, Lake Charles, LA 70601", phone: "(337) 478-6020", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Caldwell", name: "Caldwell Parish Health Unit", address: "808 Kelly Street, Columbia, LA 71418", phone: "(318) 649-2724", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Cameron", name: "Cameron Parish Health Unit", address: "107 Recreation Lane, Cameron, LA 70631", phone: "(337) 775-5368", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Catahoula", name: "Catahoula Parish Health Unit", address: "104 Bushley Street, Harrisonburg, LA 71340", phone: "(318) 744-5242", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Claiborne", name: "Claiborne Parish Health Unit", address: "519 East Main Street, Homer, LA 71040", phone: "(318) 927-9001", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Concordia", name: "Concordia Parish Health Unit", address: "906 Mickey Gilley Avenue, Ferriday, LA 71334", phone: "(318) 757-6811", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "De Soto", name: "De Soto Parish Health Unit", address: "150 South Washington Street, Mansfield, LA 71052", phone: "(318) 872-0880", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "East Baton Rouge", name: "East Baton Rouge Parish Health Unit – Vital Records", address: "353 North 12th Street, Baton Rouge, LA 70802", phone: "(225) 342-4804", website: "https://www.brla.gov/", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "East Carroll", name: "East Carroll Parish Health Unit", address: "507 2nd Street, Lake Providence, LA 71254", phone: "(318) 559-2008", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "East Feliciana", name: "East Feliciana Parish Health Unit", address: "12080 Marston Street, Clinton, LA 70722", phone: "(225) 683-8538", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Evangeline", name: "Evangeline Parish Health Unit", address: "421 West Cotton Street, Ville Platte, LA 70586", phone: "(337) 363-1126", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Franklin", name: "Franklin Parish Health Unit", address: "6614 Main Street, Winnsboro, LA 71295", phone: "(318) 435-2143", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Grant", name: "Grant Parish Health Unit", address: "304 Savage Drive, Colfax, LA 71417", phone: "(318) 627-3744", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Iberia", name: "Iberia Parish Health Unit", address: "715 Center Street, New Iberia, LA 70560", phone: "(337) 373-0032", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Iberville", name: "Iberville Parish Health Unit", address: "23405 Church Street, Plaquemine, LA 70764", phone: "(225) 687-9910", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Jackson", name: "Jackson Parish Health Unit", address: "810 South Cypress Street, Jonesboro, LA 71251", phone: "(318) 259-2390", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Jefferson", name: "Jefferson Parish Health Unit – Vital Records", address: "4421 General Meyer Avenue, New Orleans, LA 70131", phone: "(504) 349-8644", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Jefferson Davis", name: "Jefferson Davis Parish Health Unit", address: "212 East Plaquemine Street, Jennings, LA 70546", phone: "(337) 824-2408", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Lafayette", name: "Lafayette Parish Health Unit", address: "2811 West Congress Street, Lafayette, LA 70506", phone: "(337) 262-5616", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Lafourche", name: "Lafourche Parish Health Unit", address: "1197 Highway 3185, Thibodaux, LA 70301", phone: "(985) 447-0922", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "LaSalle", name: "LaSalle Parish Health Unit", address: "125 Courthouse Street, Jena, LA 71342", phone: "(318) 992-2141", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Lincoln", name: "Lincoln Parish Health Unit", address: "903 Lamy Lane, Ruston, LA 71270", phone: "(318) 251-4107", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Livingston", name: "Livingston Parish Health Unit", address: "20399 Government Boulevard, Livingston, LA 70754", phone: "(225) 686-7017", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Madison", name: "Madison Parish Health Unit", address: "403 Lind Street, Tallulah, LA 71282", phone: "(318) 574-1600", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Morehouse", name: "Morehouse Parish Health Unit", address: "900 South Washington Street, Bastrop, LA 71220", phone: "(318) 281-4194", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Natchitoches", name: "Natchitoches Parish Health Unit", address: "625 Bienville Street, Natchitoches, LA 71457", phone: "(318) 357-3158", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Orleans", name: "Orleans Parish – Louisiana Vital Records Registry", address: "1450 Poydras Street, Suite 400, New Orleans, LA 70112", phone: "(504) 593-5100", website: "https://ldh.la.gov/page/vital-records-homepage", hours: "Mon–Fri 8:00 AM – 4:00 PM" },
+  { county: "Ouachita", name: "Ouachita Parish Health Unit", address: "1650 Desiard Street, Monroe, LA 71201", phone: "(318) 361-7311", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Plaquemines", name: "Plaquemines Parish Health Unit", address: "333 F. Edward Hebert Boulevard, Suite 403, Belle Chasse, LA 70037", phone: "(504) 392-2964", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Pointe Coupee", name: "Pointe Coupee Parish Health Unit", address: "282 Hospital Road, Suite A, New Roads, LA 70760", phone: "(225) 638-9556", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Rapides", name: "Rapides Parish Health Unit", address: "1545 Jackson Street, Alexandria, LA 71301", phone: "(318) 487-5281", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Red River", name: "Red River Parish Health Unit", address: "1604 Alonzo Street, Coushatta, LA 71019", phone: "(318) 932-4576", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Richland", name: "Richland Parish Health Unit", address: "410 Louisa Street, Rayville, LA 71269", phone: "(318) 728-4416", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Sabine", name: "Sabine Parish Health Unit", address: "705 Bel Air Drive, Many, LA 71449", phone: "(318) 256-3652", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Bernard", name: "St. Bernard Parish Health Unit", address: "8201 West Judge Perez Drive, Chalmette, LA 70043", phone: "(504) 278-7422", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Charles", name: "St. Charles Parish Health Unit", address: "1020 Kabel Drive, Luling, LA 70070", phone: "(985) 785-3535", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Helena", name: "St. Helena Parish Health Unit", address: "19305 Council Street, Greensburg, LA 70441", phone: "(225) 222-4349", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. James", name: "St. James Parish Health Unit", address: "5765 Highway 44, Convent, LA 70723", phone: "(225) 562-2254", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. John the Baptist", name: "St. John the Baptist Parish Health Unit", address: "164 West 10th Street, Reserve, LA 70084", phone: "(985) 536-6633", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Landry", name: "St. Landry Parish Health Unit", address: "110 Veterans Memorial Drive, Opelousas, LA 70570", phone: "(337) 948-0234", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Martin", name: "St. Martin Parish Health Unit", address: "415 South Main Street, Suite D, St. Martinville, LA 70582", phone: "(337) 394-6612", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Mary", name: "St. Mary Parish Health Unit", address: "400 Main Street, Franklin, LA 70538", phone: "(337) 828-2338", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "St. Tammany", name: "St. Tammany Parish Health Unit", address: "1111 West Causeway Approach, Mandeville, LA 70471", phone: "(985) 893-6286", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Tangipahoa", name: "Tangipahoa Parish Health Unit", address: "15481 West Club Deluxe Road, Hammond, LA 70403", phone: "(985) 543-4482", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Tensas", name: "Tensas Parish Health Unit", address: "204 Plank Road, St. Joseph, LA 71366", phone: "(318) 766-3515", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Terrebonne", name: "Terrebonne Parish Health Unit", address: "5566 West Park Avenue, Houma, LA 70364", phone: "(985) 857-3640", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Union", name: "Union Parish Health Unit", address: "307 East Water Street, Farmerville, LA 71241", phone: "(318) 368-3188", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Vermilion", name: "Vermilion Parish Health Unit", address: "805 East Landry Street, Abbeville, LA 70510", phone: "(337) 893-5765", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Vernon", name: "Vernon Parish Health Unit", address: "1701 Nolan Trace, Leesville, LA 71446", phone: "(337) 238-0961", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Washington", name: "Washington Parish Health Unit", address: "1009 Cumberland Street, Bogalusa, LA 70427", phone: "(985) 732-6655", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Webster", name: "Webster Parish Health Unit", address: "1652 Homer Road, Minden, LA 71055", phone: "(318) 371-3030", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "West Baton Rouge", name: "West Baton Rouge Parish Health Unit", address: "695 South Alexander Avenue, Port Allen, LA 70767", phone: "(225) 342-2648", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "West Carroll", name: "West Carroll Parish Health Unit", address: "701 Bower Street, Oak Grove, LA 71263", phone: "(318) 428-3344", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "West Feliciana", name: "West Feliciana Parish Health Unit", address: "5061 Burnett Road, St. Francisville, LA 70775", phone: "(225) 635-3614", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+  { county: "Winn", name: "Winn Parish Health Unit", address: "510 East Court Street, Winnfield, LA 71483", phone: "(318) 628-3121", hours: "Mon–Fri 8:00 AM – 4:30 PM" },
+];
